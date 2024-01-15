@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Commentaire extends Model
+class Projet_Terrain extends Model
 {
     use HasFactory;
 
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    public function Maison()
+    public function Terrain()
     {
-        return $this->belongsTo(Maison::class);
+        return $this->belongsToMany(Terrain::class);
     }
 }

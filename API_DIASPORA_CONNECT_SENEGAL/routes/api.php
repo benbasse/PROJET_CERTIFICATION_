@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\maisonController;
+use App\Http\Controllers\api\terrainController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,16 @@ Route::group([
 Route::post('register', [AuthController::class,'inscription'])->name('inscription');
 
 
-//Maison
+//tous les routes pour les Maison
 Route::post('maison/create', [maisonController::class,'create']);
+Route::get('maison/liste', [maisonController::class,'index']);
+Route::get('maison/detail/{id}', [maisonController::class,'show']);
+Route::put('maison/edit/{id}', [maisonController::class,'update']);
+Route::delete('maison/supprimer/{id}', [maisonController::class,'destroy']);
+
+// les routes pour les terrains
+Route::post('terrain/create', [terrainController::class,'store']);
+Route::get('terrain/liste', [terrainController::class,'index']);
+Route::put('terrain/edit/{id}', [terrainController::class,'update']);
+Route::get('terrain/detail/{id}', [terrainController::class,'show']);
+Route::delete('terrain/supprimer/{id}', [terrainController::class,'destroy']);

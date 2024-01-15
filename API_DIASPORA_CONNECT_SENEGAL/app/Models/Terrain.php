@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Terrain extends Model
 {
     use HasFactory;
+
+    public function User()
+    {
+        return $this->hasMany(User::class);
+    }
 }
