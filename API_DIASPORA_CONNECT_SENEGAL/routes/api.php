@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\commentaireController;
 use App\Http\Controllers\api\maisonController;
 use App\Http\Controllers\api\terrainController;
 use App\Http\Controllers\AuthController;
@@ -51,3 +52,11 @@ Route::get('terrain/liste', [terrainController::class,'index']);
 Route::put('terrain/edit/{id}', [terrainController::class,'update']);
 Route::get('terrain/detail/{id}', [terrainController::class,'show']);
 Route::delete('terrain/supprimer/{id}', [terrainController::class,'destroy']);
+
+
+
+Route::middleware(['auth:api', 'acces:user'])->group(function () {
+    Route::post('commentaire/create', [commentaireController::class,'store']);
+});
+
+Route::get('commentaire/', [commentaireController::class,'']);

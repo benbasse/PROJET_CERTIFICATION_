@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EditTerrainRequest extends FormRequest
+class CreateCommentaireRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,8 @@ class EditTerrainRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'addresse'=> 'required',
-            'superficie'=> 'required|integer',
-            'prix'=> 'required|integer',
-            'description'=> 'required',
-            'image' => 'sometimes|image',
-            'type_terrain'=> 'required',
+            "contenue"=> "required",
+            "maisons_id"=> "required",
         ];
     }
 
@@ -43,17 +39,11 @@ class EditTerrainRequest extends FormRequest
         ]));
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
-            'addresse.required'=> "addresse ne peut pas être null",
-            'superficie.required'=> "la superficie est requis",
-            'superficie.number'=> "le format de la superficie est incorrect",
-            'prix.required'=> "le prix est requis",
-            'image.required' => 'l\'image doit être fourni',
-            'image.image' => 'Seul les images sont autorisés',
-            'type_terrain.required'=> "le type de terrain est requis",
-            'description.required'=> "la description est requis",
+            'contenue.required'=> 'le contenue est requis',
+            'maisons.required'=> 'la maison est requis pour commenter'
         ];
     }
 }

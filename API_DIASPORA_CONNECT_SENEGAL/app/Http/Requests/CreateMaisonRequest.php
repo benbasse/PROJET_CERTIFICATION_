@@ -26,7 +26,7 @@ class CreateMaisonRequest extends FormRequest
         return [
             'addresse'=> 'required',
             'superficie'=> 'required|integer',
-            'prix'=> 'required|integer',
+            'prix'=> 'required|',
             'description'=> 'required',
             'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
             'annee_construction'=> 'required|date',
