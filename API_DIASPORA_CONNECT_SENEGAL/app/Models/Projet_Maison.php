@@ -16,6 +16,6 @@ class Projet_Maison extends Model
 
     public function Maison()
     {
-        return $this->belongsTo(Maison::class);
+        return $this->belongsToMany(Maison::class);
     }
 }
