@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCommentaireRequest;
+use App\Http\Requests\EditCommentaireRequest;
 use App\Models\Commentaire;
 use App\Models\Maison;
 use Exception;
@@ -71,7 +72,7 @@ class commentaireController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(EditCommentaireRequest $request, $id)
     {
         try {
             $commentaire = Commentaire::find($id);
@@ -81,6 +82,9 @@ class commentaireController extends Controller
                     "status_message" => "Commentaire non trouver"
                 ]);
             } else {
+                $commentaire->contenue = $request->contenue;
+                $commentaire->maisons_id = $request->maisons_id;
+                $commentaire->save();
                 return response()->json([
                     "status_code" => 200,
                     "status_message" => "Vous avez modifier cette commentaire",

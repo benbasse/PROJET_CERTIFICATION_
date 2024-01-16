@@ -92,8 +92,8 @@ class AuthController extends Controller
         try {
             $user = new User();
             $user->nom = $request->nom;
-            $user->prenom = $request->nom;
-            $user->image = $request->image;
+            $user->prenom = $request->prenom;
+            $user->image =  $this->storeImage($request->image);
             $user->telephone = $request->telephone;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
@@ -105,5 +105,10 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return response()->json($e);
         }
+    }
+
+    private function storeImage($image)
+    {
+        return $image->store('user', 'public');
     }
 }

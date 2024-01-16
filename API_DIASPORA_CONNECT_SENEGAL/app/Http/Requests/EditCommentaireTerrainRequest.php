@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EditCommentaireRequest extends FormRequest
+class EditCommentaireTerrainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class EditCommentaireRequest extends FormRequest
     {
         return [
             "contenue"=> "required",
-            "maisons_id"=> "required",
+            "terrains_id"=> "required",
         ];
     }
 
@@ -43,7 +43,7 @@ class EditCommentaireRequest extends FormRequest
     {
         return [
             'contenue.required'=> 'le contenue est requis',
-            'maisons.required'=> 'la maison est requis pour commenter'
+            'terrains_id.required'=> 'le terrain est requis pour commenter'
         ];
     }
 }

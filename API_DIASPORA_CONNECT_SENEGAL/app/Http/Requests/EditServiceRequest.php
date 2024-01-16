@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EditCommentaireRequest extends FormRequest
+class EditServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,9 @@ class EditCommentaireRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "contenue"=> "required",
-            "maisons_id"=> "required",
+            // "titre"=> "required",
+            // "description"=> "required",
+            // "image"=> 'sometimes|image',
         ];
     }
 
@@ -39,11 +40,13 @@ class EditCommentaireRequest extends FormRequest
         ]));
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'contenue.required'=> 'le contenue est requis',
-            'maisons.required'=> 'la maison est requis pour commenter'
+            'description.required'=> "la description est requis",
+            'titre.required'=> "le titre est requis",
+            'image.sometimes' => 'l\'image doit être fourni',
+            'image.image' => 'format image invalid',
         ];
     }
 }

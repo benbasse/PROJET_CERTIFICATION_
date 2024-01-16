@@ -45,7 +45,7 @@ class terrainController extends Controller
         }
     }
 
-    
+
     public function show($id)
     {
         try {
@@ -66,8 +66,8 @@ class terrainController extends Controller
             return response()->json($e);
         }
     }
-    
-    
+
+
     public function update(EditTerrainRequest $request, Terrain $terrain)
     {
         try {
@@ -76,45 +76,45 @@ class terrainController extends Controller
             $terrain->prix = $request->prix;
             $terrain->description = $request->description;
             // if ($request->hasFile("image")) {
-                //     $terrain->image = $this->storeImage($request->image);
-                // }
-                $terrain->image = $this->storeImage($request->image);
-                $terrain->type_terrain = $request->type_terrain;
-                $terrain->save();
+            //     $terrain->image = $this->storeImage($request->image);
+            // }
+            $terrain->image = $this->storeImage($request->image);
+            $terrain->type_terrain = $request->type_terrain;
+            $terrain->save();
+            return response()->json([
+                "status_code" => 200,
+                "status_message" => " Modification reussi",
+                "terrain" => $terrain
+            ]);
+
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $terrain = Terrain::find($id);
+            if (!$terrain) {
+                return response()->json([
+                    "statys_code" => 404,
+                    "status_message" => "Terrain non trouve ",
+                ]);
+            } else {
+                $terrain->delete();
                 return response()->json([
                     "status_code" => 200,
-                    "status_message" => " Modification reussi",
-                    "terrain" => $terrain
+                    "status_message " => "Suppresion reussi"
                 ]);
-                
-            } catch (Exception $e) {
-                return response()->json($e);
             }
+        } catch (Exception $e) {
+            return response()->json($e);
         }
-        
-        public function destroy($id)
-        {
-            try {
-                $terrain = Terrain::find($id);
-                if (!$terrain) {
-                    return response()->json([
-                        "statys_code" => 404,
-                        "status_message" => "Terrain non trouve ",
-                    ]);
-                } else {
-                    $terrain->delete();
-                    return response()->json([
-                        "status_code" => 200,
-                        "status_message " => "Suppresion reussi"
-                    ]);
-                }
-            } catch (Exception $e) {
-                return response()->json($e);
-            }
-        }
-        private function storeImage($image)
-        {
-            return $image->store('terrain', 'public');
-        }
+    }
+    private function storeImage($image)
+    {
+        return $image->store('terrain', 'public');
+    }
 
 }

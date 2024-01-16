@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\api\ArticleController;
 use App\Http\Controllers\api\commentaireController;
+use App\Http\Controllers\api\CommentaireTerrainController;
 use App\Http\Controllers\api\maisonController;
+use App\Http\Controllers\api\serviceController;
 use App\Http\Controllers\api\terrainController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -21,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 //new routes
 Route::group([
 
@@ -30,9 +34,9 @@ Route::group([
 ], function ($router) {
 
     Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::post('logout', 'AuthController@logout');
+    Route::post('logout', [AuthController::class,'logout']);
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('me', [AuthController::class,'me']);
     
 });
 
@@ -56,7 +60,42 @@ Route::delete('terrain/supprimer/{id}', [terrainController::class,'destroy']);
 
 
 Route::middleware(['auth:api', 'acces:user'])->group(function () {
+    //commentaire pour les maisons
     Route::post('commentaire/create', [commentaireController::class,'store']);
+    Route::put('commentaire/edit/{id}', [commentaireController::class,'update']);
+    
+    //commentaire pour les terrains
+    Route::post('commentaire/terrain/create', [CommentaireTerrainController::class,'store']);
+    Route::put('commentaire/terrain/edit/{id}', [CommentaireTerrainController::class,'update']);
+
 });
 
-Route::get('commentaire/', [commentaireController::class,'']);
+
+// les commentaires pour les maisons
+Route::get('commentaire/liste', [commentaireController::class,'index']);
+Route::get('commentaire/detail/{id}', [commentaireController::class,'show']);
+Route::delete('commentaire/supprimer/{id}', [commentaireController::class,'destroy']);
+
+// All the routes services
+Route::get('service/liste', [serviceController::class,'index']);
+Route::get('service/detail/{id}', [serviceController::class,'show']);
+Route::post('service/create', [serviceController::class,'store']);
+Route::put('service/edit/{id}', [serviceController::class,'update']);
+Route::delete('service/supprimer/{id}', [serviceController::class,'destroy']);
+
+//commentaire pour les terrains
+Route::get('commentaire/terrain/liste', [CommentaireTerrainController::class,'index']);
+Route::get('commentaire/terrain/detail/{id}', [CommentaireTerrainController::class,'show']);
+Route::delete('commentaire/terrain/supprimer/{id}', [CommentaireTerrainController::class,'destroy']);
+
+// listes des routes pour les articles
+Route::get('article/liste', [ArticleController::class,'index']);
+Route::get('article/detail/{id}', [ArticleController::class,'show']);
+Route::post('article/create', [ArticleController::class,'store']);
+Route::put('article/edit/{id}', [ArticleController::class,'update']);
+Route::delete('article/supprimer/{id}', [ArticleController::class,'destroy']);
+
+
+Route::middleware(['auth:api', 'acces:admin'])->group(function (){
+
+});
