@@ -18,4 +18,9 @@ class Maison extends Model
     {
         return $this->hasMany(Commentaire::class);
     }
+
+    public function Categorie()
+    {
+        return $this->belongsTo(Categorie::class);
+    }
 }

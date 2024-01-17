@@ -13,14 +13,22 @@ use Illuminate\Http\Request;
 class commentaireController extends Controller
 {
 
-    public function index()
+    public function index(Commentaire $commentaire)
     {
         try {
-            return response()->json([
-                "status_code" => 200,
-                "status_message" => "liste des commentaires",
-                "terrains" => Commentaire::all()
-            ]);
+            $commentaire = Commentaire::all();
+            if (empty($commentaire)) {
+                return response()->json([
+                    "status_code"=>404,
+                    "message"=> "Pas de commentaires",
+                ]);  
+            } else {
+                return response()->json([
+                    "status_code" => 200,
+                    "status_message" => "liste des commentaires",
+                    "terrains" => $commentaire
+                ]);
+            }
         } catch (Exception $e) {
             return response()->json($e);
         }

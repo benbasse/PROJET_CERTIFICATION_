@@ -14,11 +14,19 @@ class serviceController extends Controller
     public function index(Service $service)
     {
         try {
-            return response()->json([
-                "status_code" => 200,
-                "status_message" => "liste des services",
-                "services" => Service::all(),
-            ]);
+            $service = Service::all();
+            if (empty($service)) {
+                return response()->json([
+                    "status_code" => 404,
+                    "message" => "Services non disponibles"
+                ]);
+            } else {
+                return response()->json([
+                    "status_code" => 200,
+                    "status_message" => "liste des services",
+                    "services" => $service,
+                ]);
+            }
         } catch (Exception $e) {
             return response()->json($e);
         }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->date('annee_construction');
             $table->integer('nombre_etage');
-            $table->enum('type', ['R+1','R+2','R+3','R+4','R+5'])->default('R+1');
+            $table->unsignedBigInteger('categories_id');
             $table->timestamps();
         });
     }

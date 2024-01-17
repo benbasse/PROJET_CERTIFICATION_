@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DemandeService extends Model
+class Categorie extends Model
 {
     use HasFactory;
+
+    public function Maison()
+    {
+        return $this->hasMany(Maison::class);
+    }
 }

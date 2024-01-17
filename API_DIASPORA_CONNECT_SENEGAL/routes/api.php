@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\api\ArticleController;
+use App\Http\Controllers\api\CategorieController;
 use App\Http\Controllers\api\commentaireController;
 use App\Http\Controllers\api\CommentaireTerrainController;
+use App\Http\Controllers\api\DemandeServiceController;
 use App\Http\Controllers\api\maisonController;
 use App\Http\Controllers\api\serviceController;
 use App\Http\Controllers\api\terrainController;
@@ -67,7 +69,8 @@ Route::middleware(['auth:api', 'acces:user'])->group(function () {
     //commentaire pour les terrains
     Route::post('commentaire/terrain/create', [CommentaireTerrainController::class,'store']);
     Route::put('commentaire/terrain/edit/{id}', [CommentaireTerrainController::class,'update']);
-
+    
+    Route::post('service/demande/create', [DemandeServiceController::class,'store']);
 });
 
 
@@ -98,4 +101,19 @@ Route::delete('article/supprimer/{id}', [ArticleController::class,'destroy']);
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function (){
 
+    Route::put('service/demande/accepter/{id}', [DemandeServiceController::class,'accepterDemande']);
+    Route::delete('service/demande/supprimer/{id}', [DemandeServiceController::class,'deleteDemande']);
+    Route::post('service/demande/refuser/{id}', [DemandeServiceController::class,'refuserDemande']);
 });
+
+Route::get('service/demande/detail/{id}', [DemandeServiceController::class,'show']);
+Route::get('service/demande/liste', [DemandeServiceController::class,'index']);
+Route::get('service/demande/listeRefuser', [DemandeServiceController::class,'listeDemandeRefuser']);
+Route::get('service/demande/listeAccepter', [DemandeServiceController::class,'listeDemandeAccepter']);
+
+// Les routes pour les categories
+Route::get('categorie/liste', [CategorieController::class,'index']);
+Route::post('categorie/create', [CategorieController::class,'store']);
+Route::put('categorie/edit/{id}', [CategorieController::class,'update']);
+Route::get('categorie/detail/{id}', [CategorieController::class,'show']);
+Route::delete('categorie/supprimer/{id}', [CategorieController::class,'destroy']);

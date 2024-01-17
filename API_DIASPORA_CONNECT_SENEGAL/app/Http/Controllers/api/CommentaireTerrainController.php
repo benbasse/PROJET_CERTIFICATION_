@@ -142,8 +142,7 @@ class CommentaireTerrainController extends Controller
                 $commentaireTerrain->delete();
                 return response()->json([
                     "status_code" => 200,
-                    "message" => "Commentaire supprimer",
-                    "commentaireTerrain" => $commentaireTerrain
+                    "message" => "Commentaire supprimer"
                 ]);
             }
         } catch (Exception $e) {

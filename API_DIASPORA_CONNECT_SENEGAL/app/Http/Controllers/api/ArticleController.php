@@ -108,8 +108,7 @@ class ArticleController extends Controller
                 $article->delete();
                 return response()->json([
                     'status' => 200,
-                    'message' => 'article supprimer',
-                    'article' => $article
+                    'message' => 'article supprimer'
                 ]);
             }
         } catch (Exception $e) {

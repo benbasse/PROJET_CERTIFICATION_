@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateMaisonRequest;
 use App\Http\Requests\EditMaisonRequest;
+use App\Models\Categorie;
 use App\Models\Maison;
 use Exception;
 use Illuminate\Http\Request;
@@ -35,6 +36,15 @@ class maisonController extends Controller
             $maison->image = $this->storeImage($request->image);
             $maison->annee_construction = $request->annee_construction;
             $maison->nombre_etage = $request->nombre_etage;
+            $categorie = Categorie::find($request->categories_id);
+            if (!$categorie) {
+                return response()->json([
+                    "status_code" => 404,
+                    "status_message" => "Cette categorie n'existe pas",
+                ]);
+            } else {
+                $maison->categories_id = $categorie->id;
+            }
             $maison->save();
             return response()->json([
                 'status_code' => 200,
@@ -57,9 +67,9 @@ class maisonController extends Controller
             $maison = Maison::find($id);
             if (!$maison) {
                 return response()->json([
-                    'status_code'=> 404,
-                    'status_message'=> 'la maison sélétionnée n\'existe pas'
-                    ]);
+                    'status_code' => 404,
+                    'status_message' => 'la maison sélétionnée n\'existe pas'
+                ]);
             } else {
                 return response()->json([
                     "status_code" => 200,
@@ -72,7 +82,7 @@ class maisonController extends Controller
         }
     }
 
-    public function update(EditMaisonRequest $request, $id)
+    public function update(CreateMaisonRequest $request, $id)
     {
         try {
             $maison = Maison::find($id);
@@ -91,6 +101,15 @@ class maisonController extends Controller
                 }
                 $maison->annee_construction = $request->annee_construction;
                 $maison->nombre_etage = $request->nombre_etage;
+                $categorie = Categorie::find($request->categories_id);
+                if (!$categorie) {
+                    return response()->json([
+                        "status_code" => 404,
+                        "status_message" => "Cette categorie n'existe pas",
+                    ]);
+                } else {
+                    $maison->categories_id = $categorie->id;
+                }
                 $maison->save();
                 return response()->json([
                     "status_code" => 200,
@@ -109,9 +128,9 @@ class maisonController extends Controller
             $maison = Maison::find($id);
             if (!$maison) {
                 return response()->json([
-                    "status_code"=> 404,
-                    "status_message"=> "La maison que vous voulez supprimer n'existe pas"
-                    ]);
+                    "status_code" => 404,
+                    "status_message" => "La maison que vous voulez supprimer n'existe pas"
+                ]);
             } else {
                 $maison->delete();
                 return response()->json([
