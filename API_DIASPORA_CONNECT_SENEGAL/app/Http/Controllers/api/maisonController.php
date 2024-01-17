@@ -82,8 +82,9 @@ class maisonController extends Controller
         }
     }
 
-    public function update(CreateMaisonRequest $request, $id)
+    public function update(CreateMaisonRequest $request, $id, Maison $maison)
     {
+
         try {
             $maison = Maison::find($id);
             if (!$maison) {
@@ -145,3 +146,4 @@ class maisonController extends Controller
 
 
 }
+
