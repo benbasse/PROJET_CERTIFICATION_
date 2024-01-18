@@ -22,7 +22,7 @@ class PayementController extends Controller
         return view('index');
     }
 
-    public function payment(Request $request)
+    public function payment(PayementRequest $request)
     {
         # send info to api paytech
 
