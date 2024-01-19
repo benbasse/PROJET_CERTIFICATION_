@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginUserRequest;
@@ -19,7 +20,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','inscription']]);
+        $this->middleware('auth:api', ['except' => ['login', 'inscription']]);
     }
 
     /**
@@ -30,8 +31,8 @@ class AuthController extends Controller
     public function login(LoginUserRequest $request)
     {
         $credentials = request(['email', 'password']);
-        
-        if (! $token = auth()->attempt($credentials)) {
+
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         $user = Auth::user();
@@ -93,7 +94,7 @@ class AuthController extends Controller
             $user = new User();
             $user->nom = $request->nom;
             $user->prenom = $request->prenom;
-            $user->image =  $this->storeImage($request->image);
+            $user->image = $this->storeImage($request->image);
             $user->telephone = $request->telephone;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
@@ -110,5 +111,20 @@ class AuthController extends Controller
     private function storeImage($image)
     {
         return $image->store('user', 'public');
+    }
+
+    public function sendWhatsapp(User $user)
+    {
+
+        try {
+            $numeroWhatsApp = $user->telephone;
+            $urlWhatsApp = "https://api.whatsapp.com/send?phone=$numeroWhatsApp";
+
+            return redirect()->to($urlWhatsApp);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('whatsapp');
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

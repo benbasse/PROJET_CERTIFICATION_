@@ -117,3 +117,7 @@ Route::post('categorie/create', [CategorieController::class,'store']);
 Route::put('categorie/edit/{id}', [CategorieController::class,'update']);
 Route::get('categorie/detail/{id}', [CategorieController::class,'show']);
 Route::delete('categorie/supprimer/{id}', [CategorieController::class,'destroy']);
+
+// Remplissez vos tetes et laisser vos tetes remplir vos poches
+
+Route::post('users/whatsapp/{user}', [AuthController::class, 'sendWhatsapp'])->name('whatsapp');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\PaytechService;
 use App\Http\Requests\PayementRequest;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Redirect;
 
 class PayementController extends Controller
@@ -21,7 +22,7 @@ class PayementController extends Controller
         return view('index');
     }
 
-    public function payment(Request $request)
+    public function payment(PayementRequest $request)
     {
         # send info to api paytech
 
@@ -94,7 +95,7 @@ class PayementController extends Controller
 
         # save payment database
 
-        /* $payment = Payment::firstOrCreate([
+        $payment = Payment::firstOrCreate([
             'token' => $data['token'],
         ], [
             'user_id' => auth()->user()->id,
@@ -109,12 +110,12 @@ class PayementController extends Controller
                 'success' => false,
                 'data' => $data
             ];
-        } */
+        } 
 
 
         # Redirect to Success page if payment success
 
-        // $data['payment_id'] = $payment->id;
+        $data['payment_id'] = $payment->id;
 
         /*
             You can continu to save onother records to database using Eloquant methods
