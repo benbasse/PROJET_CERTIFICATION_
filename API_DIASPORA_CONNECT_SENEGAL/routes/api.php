@@ -9,6 +9,7 @@ use App\Http\Controllers\api\maisonController;
 use App\Http\Controllers\api\serviceController;
 use App\Http\Controllers\api\terrainController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Panier1Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,15 +47,15 @@ Route::post('register', [AuthController::class,'inscription'])->name('inscriptio
 
 
 //tous les routes pour les Maison
-Route::post('maison/create', [maisonController::class,'create']);
 Route::get('maison/liste', [maisonController::class,'index']);
+Route::post('maison/create', [maisonController::class,'create']);
 Route::get('maison/detail/{id}', [maisonController::class,'show']);
 Route::put('maison/edit/{id}', [maisonController::class,'update']);
 Route::delete('maison/supprimer/{id}', [maisonController::class,'destroy']);
 
 // les routes pour les terrains
-Route::post('terrain/create', [terrainController::class,'store']);
 Route::get('terrain/liste', [terrainController::class,'index']);
+Route::post('terrain/create', [terrainController::class,'store']);
 Route::put('terrain/edit/{id}', [terrainController::class,'update']);
 Route::get('terrain/detail/{id}', [terrainController::class,'show']);
 Route::delete('terrain/supprimer/{id}', [terrainController::class,'destroy']);
@@ -71,6 +72,7 @@ Route::middleware(['auth:api', 'acces:user'])->group(function () {
     Route::put('commentaire/terrain/edit/{id}', [CommentaireTerrainController::class,'update']);
     
     Route::post('service/demande/create', [DemandeServiceController::class,'store']);
+
 });
 
 
@@ -81,9 +83,9 @@ Route::delete('commentaire/supprimer/{id}', [commentaireController::class,'destr
 
 // All the routes services
 Route::get('service/liste', [serviceController::class,'index']);
-Route::get('service/detail/{id}', [serviceController::class,'show']);
 Route::post('service/create', [serviceController::class,'store']);
 Route::put('service/edit/{id}', [serviceController::class,'update']);
+Route::get('service/detail/{id}', [serviceController::class,'show']);
 Route::delete('service/supprimer/{id}', [serviceController::class,'destroy']);
 
 //commentaire pour les terrains
@@ -93,21 +95,23 @@ Route::delete('commentaire/terrain/supprimer/{id}', [CommentaireTerrainControlle
 
 // listes des routes pour les articles
 Route::get('article/liste', [ArticleController::class,'index']);
-Route::get('article/detail/{id}', [ArticleController::class,'show']);
 Route::post('article/create', [ArticleController::class,'store']);
 Route::put('article/edit/{id}', [ArticleController::class,'update']);
+Route::get('article/detail/{id}', [ArticleController::class,'show']);
 Route::delete('article/supprimer/{id}', [ArticleController::class,'destroy']);
 
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function (){
-
+    
+    Route::post('service/demande/refuser/{id}', [DemandeServiceController::class,'refuserDemande']);
     Route::put('service/demande/accepter/{id}', [DemandeServiceController::class,'accepterDemande']);
     Route::delete('service/demande/supprimer/{id}', [DemandeServiceController::class,'deleteDemande']);
-    Route::post('service/demande/refuser/{id}', [DemandeServiceController::class,'refuserDemande']);
+
+    Route::post('panier1/ajoute/maison', [Panier1Controller::class,'store']);
 });
 
-Route::get('service/demande/detail/{id}', [DemandeServiceController::class,'show']);
 Route::get('service/demande/liste', [DemandeServiceController::class,'index']);
+Route::get('service/demande/detail/{id}', [DemandeServiceController::class,'show']);
 Route::get('service/demande/listeRefuser', [DemandeServiceController::class,'listeDemandeRefuser']);
 Route::get('service/demande/listeAccepter', [DemandeServiceController::class,'listeDemandeAccepter']);
 
@@ -121,3 +125,5 @@ Route::delete('categorie/supprimer/{id}', [CategorieController::class,'destroy']
 // Remplissez vos tetes et laisser vos tetes remplir vos poches
 
 Route::post('users/whatsapp/{user}', [AuthController::class, 'sendWhatsapp'])->name('whatsapp');
+
+Route::get('panier1/prixtotal/{userID}', [Panier1Controller::class,'calculateTotalPrice']);

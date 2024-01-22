@@ -11,6 +11,18 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
+
+/**
+ * @OA\Info(title="API_PROJET_CERTIFICATION_SIMPLON", version="0.1")
+ * @OA\PathItem(path="/USERS")
+ * @OA\Tag(
+ *     name="DIASPORA CONNECT",
+ *     description="Endpoints de tous les fonctionnalites."
+ * )
+ * 
+ * @OA\Server(url="127.0.0.1:8000/")
+ */
+
 class AuthController extends Controller
 {
     /**
@@ -28,6 +40,37 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+     /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Get a JWT via given credentials.",
+     *     operationId="login",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", format="email", example="user@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password123")
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="access_token", type="string"),
+     *             @OA\Property(property="token_type", type="string"),
+     *             @OA\Property(property="expires_in", type="integer"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="Unauthorized"),
+     *         )
+     *     ),
+     * )
+     */ 
     public function login(LoginUserRequest $request)
     {
         $credentials = request(['email', 'password']);
@@ -88,6 +131,41 @@ class AuthController extends Controller
         ]);
     }
 
+
+    /**
+     * @OA\Post(
+     *     path="/api/inscription",
+     *     summary="Handle user registration.",
+     *     operationId="inscription",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"nom", "prenom", "image", "telephone", "email", "password"},
+     *             @OA\Property(property="nom", type="string", example="John"),
+     *             @OA\Property(property="prenom", type="string", example="Doe"),
+     *             @OA\Property(property="image", type="string", example="base64-encoded-image"),
+     *             @OA\Property(property="telephone", type="string", example="123456789"),
+     *             @OA\Property(property="email", type="string", format="email", example="user@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password123"),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status_code", type="integer", example=200),
+     *             @OA\Property(property="status_message", type="string", example="Inscription réussie"),
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="Internal Server Error"),
+     *         )
+     *     ),
+     * )
+     */
     public function inscription(RegisterUserRequest $request)
     {
         try {
