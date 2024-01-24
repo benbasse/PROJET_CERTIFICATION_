@@ -18,5 +18,10 @@ class Panier1 extends Model
         return $this->belongsToMany(Maison::class);
     }
 
+    private function Terrain()
+    {
+        return $this->belongsToMany(Terrain::class);
+    }
+
 
 }
