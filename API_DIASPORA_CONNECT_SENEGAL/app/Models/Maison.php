@@ -23,4 +23,5 @@ class Maison extends Model
     {
         return $this->belongsTo(Categorie::class);
     }
+
 }
