@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('panier1s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('maisons_id');
+            $table->unsignedBigInteger('maisons_id')->nullable();
+            $table->unsignedBigInteger('terrains_id')->nullable();
             $table->timestamps();
         });
     }
