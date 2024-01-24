@@ -6,6 +6,7 @@ use App\Http\Requests\StorePanier1Request;
 use App\Http\Requests\UpdatePanier1Request;
 use App\Models\Maison;
 use App\Models\Panier1;
+use App\Models\Terrain;
 use Exception;
 
 class Panier1Controller extends Controller
@@ -35,24 +36,47 @@ class Panier1Controller extends Controller
             $panier1 = new Panier1();
             $panier1->users_id = auth()->user()->id;
             $maison = Maison::find($request->maisons_id);
+            $terrain = Terrain::find($request->terrains_id);
             if (!$maison) {
                 return response()->json([
                     "error" => "404",
                     "message" => "maison non trouve"
                 ]);
+            } else {
+                $panier1->maisons_id = $maison->id;
             }
-            $panierExist = Panier1::where('users_id', $panier1->users_id)
-                ->where('maisons_id', $maison->id)
-                ->exists();
 
-            if ($panierExist) {
+            if (!$terrain) {
                 return response()->json([
-                    'status' => 400,
-                    'message' => 'Cette maison est deja dans la panier'
+                    "error" => "404",
+                    "message" => "terrain non trouve"
+                ]);
+            } else {
+                $panier1->terrains_id = $terrain->id;
+            }
+
+            if (!$maison || !$terrain) {
+                return response()->json([
+                    "error" => "404",
+                    "message" => "Bien non trouvé"
                 ]);
             }
 
-            $panier1->maisons_id = $maison->id;
+            $panierExist = Panier1::where('users_id', $panier1->users_id)
+            ->where('maisons_id', $maison->id)
+            ->exists();
+
+            $panierExist = Panier1::where('users_id', $panier1->users_id)
+            ->where('terrains_id', $terrain->id)
+            ->exists();
+            
+            if ($panierExist) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Cette bien est deja dans la panier'
+                ]);
+            }
+
             if ($panier1->save()) {
                 return response()->json([
                     "status_code" => 200,
