@@ -111,7 +111,7 @@ class maisonController extends Controller
                 } else {
                     $maison->categories_id = $categorie->id;
                 }
-                $maison->save();
+                $maison->update();
                 return response()->json([
                     "status_code" => 200,
                     "status_message" => "Vous avez modifier cette maison",

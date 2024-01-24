@@ -11,6 +11,8 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 
+
+
 class AuthController extends Controller
 {
     /**
@@ -28,6 +30,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    
+
     public function login(LoginUserRequest $request)
     {
         $credentials = request(['email', 'password']);
@@ -88,6 +92,7 @@ class AuthController extends Controller
         ]);
     }
 
+
     public function inscription(RegisterUserRequest $request)
     {
         try {
@@ -117,7 +122,10 @@ class AuthController extends Controller
     {
 
         try {
-            $numeroWhatsApp = $user->telephone;
+            // if($user->role == 'admin') {
+                // $numeroWhatsApp = $user->telephone;
+                $numeroWhatsApp = 772889673;
+            // }
             $urlWhatsApp = "https://api.whatsapp.com/send?phone=$numeroWhatsApp";
 
             return redirect()->to($urlWhatsApp);

@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Newsletter extends Model
 {
     use HasFactory;
-
-    public function Commentaire()
-    {
-        return $this->hasMany(CommentaireArticle::class);
-    }
 }

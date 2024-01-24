@@ -1,0 +1,929 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API DIASPORA CONNECT",
+        "description": "C'EST UNE API CODER AVEC LARAVEL DONT ON UTILISE POUR UNE PLATEFORME DE GESTION IMMOBILIERE",
+        "version": "1.0.0"
+    },
+    "security": [
+        {
+            "BearerAuth": []
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "summary": "CONNEXION ADMIN",
+                "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "API CERTIFICATION"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "email": "admin@gmail.com",
+                                "password": "azertyuiop"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/categorie/supprimer/4": {
+            "delete": {
+                "summary": "Supprimer categorie",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Categorie"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/categorie/edit/1": {
+            "put": {
+                "summary": "modifier categorie",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Categorie"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "titre": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "titre": "titre",
+                                "description": "description"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/categorie/liste": {
+            "get": {
+                "summary": "liste categorie",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Categorie"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/categorie/create": {
+            "post": {
+                "summary": "Ajouter categorie",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Categorie"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/refuser/1": {
+            "put": {
+                "summary": "refuser demande",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "": {
+            "put": {
+                "summary": "accepter demande",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/listeRefuser": {
+            "get": {
+                "summary": "liste des demandes refuser",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/listeAccepter": {
+            "get": {
+                "summary": "liste des demandes accepter",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/detail/1": {
+            "get": {
+                "summary": "detail demande",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/liste": {
+            "get": {
+                "summary": "liste des demande",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/demande/create": {
+            "post": {
+                "summary": "faire une demande",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DEMANDE SERVICE"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "services_id": "integer"
+                                }
+                            },
+                            "example": {
+                                "services_id": 1
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/article/supprimer/3": {
+            "delete": {
+                "summary": "supprimer article",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ARTICLE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/article/edit/1": {
+            "put": {
+                "summary": "modifier article",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ARTICLE"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "titre": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "titre": "titre modifier",
+                                "description": "description modifier"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/article/detail/1": {
+            "get": {
+                "summary": "detail article",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ARTICLE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/article/liste": {
+            "get": {
+                "summary": "liste articles",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ARTICLE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/article/create": {
+            "post": {
+                "summary": "ajouter article",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ARTICLE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/commentaire/terrain/supprimer/2": {
+            "delete": {
+                "summary": "supprimer terrain",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE TERRAIN"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/commentaire/terrain/edit/2": {
+            "put": {
+                "summary": "modifier terrain",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE TERRAIN"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "contenue": {
+                                        "type": "string"
+                                    },
+                                    "terrains_id": "integer"
+                                }
+                            },
+                            "example": {
+                                "contenue": "contenue mis a jour",
+                                "terrains_id": 1
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/commentaire/terrain/create": {
+            "post": {
+                "summary": "ajouter commentaire",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE TERRAIN"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "contenue": {
+                                        "type": "string"
+                                    },
+                                    "terrains_id": "integer"
+                                }
+                            },
+                            "example": {
+                                "contenue": "commentaire terrain",
+                                "terrains_id": 11
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/service/supprimer/2": {
+            "delete": {
+                "summary": "supprimer service",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/edit/1": {
+            "put": {
+                "summary": "update service",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SERVICE"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "titre": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "titre": "titre update 1",
+                                "description": "description update 2",
+                                "image": "YBGPhMMMvcDmnkNnVVHbc00B92qo1MPHEpa6SxEG.png"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/service/create": {
+            "post": {
+                "summary": "ajouter service",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/service/detail/1": {
+            "get": {
+                "summary": "detail service",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/commentaire/supprimer/3": {
+            "delete": {
+                "summary": "supprimer commentaire",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE MAISON"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/commentaire/edit/1": {
+            "put": {
+                "summary": "modifier commentaire",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE MAISON"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "contenue": {
+                                        "type": "string"
+                                    },
+                                    "maisons_id": "integer"
+                                }
+                            },
+                            "example": {
+                                "contenue": "contenue modifier",
+                                "maisons_id": 1
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/commentaire/create": {
+            "post": {
+                "summary": "ajouter commentaire",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE MAISON"
+                ],
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "contenue": {
+                                        "type": "string"
+                                    },
+                                    "maisons_id": "integer"
+                                }
+                            },
+                            "example": {
+                                "contenue": "my comment",
+                                "maisons_id": 7
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/terrain/edit/1": {
+            "put": {
+                "summary": "modifier terrain",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TERRAIN"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "addresse": {
+                                        "type": "string"
+                                    },
+                                    "superficie": "integer",
+                                    "prix": "integer",
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "type_terrain": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "addresse": "Guediawaye",
+                                "superficie": 12,
+                                "prix": 121212,
+                                "description": "this is the description",
+                                "image": "image.png",
+                                "type_terrain": "Rectangle"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/maison/detail/2": {
+            "get": {
+                "summary": "detail maison",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/maison/edit/4": {
+            "put": {
+                "summary": "modifier",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/maison/liste": {
+            "get": {
+                "summary": "liste",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/maison/create": {
+            "post": {
+                "summary": "ajouter maison",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": []
+            }
+        }
+    }
+}

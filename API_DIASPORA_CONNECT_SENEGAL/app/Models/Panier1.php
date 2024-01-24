@@ -5,17 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projet_Maison extends Model
+class Panier1 extends Model
 {
     use HasFactory;
 
-    public function User()
+    private function User()
     {
         return $this->belongsToMany(User::class);
     }
-
-    public function Maison()
+    private function Maison()
     {
         return $this->belongsToMany(Maison::class);
     }
+
+    private function Terrain()
+    {
+        return $this->belongsToMany(Terrain::class);
+    }
+
+
 }
