@@ -14,12 +14,6 @@ class UserTest extends TestCase
     /**
      * A basic feature test example.
      */
-    // public function test_example(): void
-    // {
-    //     $response = $this->get('/');
-
-    //     $response->assertStatus(200);
-    // }
 
     public function test_can_register_user()
     {
@@ -37,5 +31,27 @@ class UserTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_can_login_user_with_email()
+    {
+        $userData = [
+            'email' => 'musa@gmail.com',
+            'password' => hash::make('password'),
+        ];
+        $response = $this->postJson('/api/auth/login', $userData);
+        $response->assertStatus(200);
 
+    }
+
+
+    public function test_user_can_logout()
+    {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+        $response = $this->post('/api/auth/logout');
+        $this->assertGuest();
+        $response->assertStatus(200);
+    }
 }
