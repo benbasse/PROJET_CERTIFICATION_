@@ -28,7 +28,7 @@ class EditMaisonRequest extends FormRequest
             'superficie'=> 'required|integer',
             'prix'=> 'required|integer',
             'description'=> 'required',
-            'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
+            'image' => 'sometimes',
             'annee_construction'=> 'required|date',
             'nombre_etage'=> 'required',
         ];
@@ -56,6 +56,7 @@ class EditMaisonRequest extends FormRequest
             'image.max' => 'La taille de l\'image est trop grand 50 mo max',
             'image.mimes' => "L'image est invalide",
             'annee_construction.required'=> "l'annee de construction est requis",
+            'annee_construction.date'=> "le format de date de construction est incorrect",
             'description.required'=> "la description est requis",
             'nombre_etage.required'=> "le nombre d'etage est requis"
         ];
