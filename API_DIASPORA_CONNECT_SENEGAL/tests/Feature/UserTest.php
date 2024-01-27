@@ -53,5 +53,6 @@ class UserTest extends TestCase
         $response = $this->post('/api/auth/logout');
         $this->assertGuest();
         $response->assertStatus(200);
+        // dump($response->json());
     }
 }
