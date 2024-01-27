@@ -28,7 +28,7 @@ class EditTerrainRequest extends FormRequest
             'superficie'=> 'required|integer',
             'prix'=> 'required|integer',
             'description'=> 'required',
-            'image' => 'sometimes|image',
+            'image' => 'sometimes',
             'type_terrain'=> 'required',
         ];
     }
@@ -50,7 +50,7 @@ class EditTerrainRequest extends FormRequest
             'superficie.required'=> "la superficie est requis",
             'superficie.number'=> "le format de la superficie est incorrect",
             'prix.required'=> "le prix est requis",
-            'image.required' => 'l\'image doit être fourni',
+            'image.sometimes' => 'l\'image doit être fourni',
             'image.image' => 'Seul les images sont autorisés',
             'type_terrain.required'=> "le type de terrain est requis",
             'description.required'=> "la description est requis",
