@@ -75,12 +75,12 @@ class terrainController extends Controller
             $terrain->superficie = $request->superficie;
             $terrain->prix = $request->prix;
             $terrain->description = $request->description;
-            // if ($request->hasFile("image")) {
-            //     $terrain->image = $this->storeImage($request->image);
-            // }
-            $terrain->image = $this->storeImage($request->image);
+            if ($request->hasFile("image")) {
+                $terrain->image = $this->storeImage($request->image);
+            }
+            // $terrain->image = $this->storeImage($request->image);
             $terrain->type_terrain = $request->type_terrain;
-            $terrain->save();
+            $terrain->update();
             return response()->json([
                 "status_code" => 200,
                 "status_message" => " Modification reussi",
@@ -105,7 +105,7 @@ class terrainController extends Controller
                 $terrain->delete();
                 return response()->json([
                     "status_code" => 200,
-                    "status_message " => "Suppresion reussi"
+                    "status_message " => "Suppression reussi"
                 ]);
             }
         } catch (Exception $e) {
