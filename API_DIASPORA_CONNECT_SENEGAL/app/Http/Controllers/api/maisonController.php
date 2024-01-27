@@ -7,6 +7,7 @@ use App\Http\Requests\CreateMaisonRequest;
 use App\Http\Requests\EditMaisonRequest;
 use App\Models\Categorie;
 use App\Models\Maison;
+use App\Notifications\NewsletterNotification;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,9 @@ class maisonController extends Controller
                 $maison->categories_id = $categorie->id;
             }
             $maison->save();
+            // if ($maison) {
+            //     $maison->notify(new NewsletterNotification());
+            // }
             return response()->json([
                 'status_code' => 200,
                 'status_message' => 'La maison a été ajouter',
@@ -82,7 +86,7 @@ class maisonController extends Controller
         }
     }
 
-    public function update(CreateMaisonRequest $request, $id, Maison $maison)
+    public function update(EditMaisonRequest $request, $id, Maison $maison)
     {
 
         try {
