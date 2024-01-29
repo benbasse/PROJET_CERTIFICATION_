@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,6 +15,11 @@ class TerrainTest extends TestCase
 
     public function test_create_a_terrain(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->post('api/terrain/create', [
             'addresse'=> 'Guediawaye',
             'superficie'=> 12000,
@@ -28,12 +34,16 @@ class TerrainTest extends TestCase
 
     public function test_update_a_terrain(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->put('api/terrain/edit/1', [
             'addresse'=> 'Guediawaye',
             'superficie'=> 12000,
             'prix'=> 5000000,
             'description'=> 'this is the description',
-            'image' => 'image.png',
             'type_terrain'=> 'angle',
         ]);
         $response->assertStatus(200);
@@ -42,6 +52,11 @@ class TerrainTest extends TestCase
 
     public function test_delete_a_terrain(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->delete('api/terrain/supprimer/1');
         $response->assertStatus(200);
     }
