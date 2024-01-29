@@ -36,7 +36,6 @@ class maisonController extends Controller
             $maison->prix = $request->prix;
             $maison->image = $this->storeImage($request->image);
             $maison->annee_construction = $request->annee_construction;
-            $maison->nombre_etage = $request->nombre_etage;
             $categorie = Categorie::find($request->categories_id);
             if (!$categorie) {
                 return response()->json([
@@ -105,7 +104,6 @@ class maisonController extends Controller
                     $maison->image = $this->storeImage($request->image);
                 }
                 $maison->annee_construction = $request->annee_construction;
-                $maison->nombre_etage = $request->nombre_etage;
                 $categorie = Categorie::find($request->categories_id);
                 if (!$categorie) {
                     return response()->json([

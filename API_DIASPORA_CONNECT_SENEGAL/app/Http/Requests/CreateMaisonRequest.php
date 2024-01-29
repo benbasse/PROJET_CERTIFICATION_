@@ -30,7 +30,6 @@ class CreateMaisonRequest extends FormRequest
             'description'=> 'required',
             'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
             'annee_construction'=> 'required|date',
-            'nombre_etage'=> 'required',
         ];
     }
 
@@ -57,7 +56,6 @@ class CreateMaisonRequest extends FormRequest
             'image.mimes' => "L'image est invalide",
             'annee_construction.required'=> "l'annee de construction est requis",
             'description.required'=> "la description est requis",
-            'nombre_etage.required'=> "le nombre d'etage est requis"
         ];
     }
 }

@@ -30,7 +30,6 @@ class EditMaisonRequest extends FormRequest
             'description'=> 'required',
             'image' => 'sometimes',
             'annee_construction'=> 'required|date',
-            'nombre_etage'=> 'required',
         ];
     }
 
@@ -58,7 +57,6 @@ class EditMaisonRequest extends FormRequest
             'annee_construction.required'=> "l'annee de construction est requis",
             'annee_construction.date'=> "le format de date de construction est incorrect",
             'description.required'=> "la description est requis",
-            'nombre_etage.required'=> "le nombre d'etage est requis"
         ];
     }
 }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('description');
             $table->string('image');
             $table->date('annee_construction');
-            $table->integer('nombre_etage');
             $table->unsignedBigInteger('categories_id');
             $table->timestamps();
         });
