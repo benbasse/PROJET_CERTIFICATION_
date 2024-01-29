@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -14,13 +15,18 @@ class MaisonTest extends TestCase
 
     public function test_create_a_maison(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->post('api/maison/create', [
             'addresse'=> 'Guediawaye',
             'superficie'=> 123,
             'prix'=> 1500000,
             'description'=> 0,
             'image'=> 'image.png',
-            'annee_construction'=> 200,
+            'annee_construction'=> 2020,
             'nombre_etage'=> 12,
             'categories_id'=> 1
         ]);
@@ -29,6 +35,11 @@ class MaisonTest extends TestCase
 
     public function test_update_a_maison(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->put('api/maison/edit/1', [
             'addresse'=> 'Guediawaye',
             'superficie'=> 123,
@@ -38,6 +49,11 @@ class MaisonTest extends TestCase
 
     public function test_delete_a_maison(): void
     {
+        $user = User::factory()->create();
+        $response = $this->post('/api/auth/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
         $response = $this->delete('api/maison/supprimer/1');
         $response->assertStatus(200);
     }
