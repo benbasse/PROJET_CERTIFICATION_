@@ -3,7 +3,7 @@ services:
     # Mysql database container
     db:
         image: mysql
-        container_name: database_certification
+        container_name: ContainerMysql
         restart: always
         volumes:
             - db-data:/var/lib/mysql
@@ -15,7 +15,7 @@ services:
     # phpmyadmin container
     phpmyadmin:
         image: phpmyadmin
-        container_name: phpmyadmin_certification
+        container_name: ContainerPhpMyAdmin
         restart: always
         depends_on:
             - db
@@ -25,17 +25,14 @@ services:
             PMA_HOST: db
         networks:
             - tutorial
-
-    #  apache project container
     www:
-        build: 
-            context: .
-            dockerfile : ./docker/Dockerfile
-        container_name: projet_certification
+        build: docker/php
+        container_name: ContainerDiaspora
         ports:
           - "8741:80"
         volumes:
-            - .:/var/www/html
+            - ./docker/php/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www/html
         restart: always
         networks:
             - tutorial
