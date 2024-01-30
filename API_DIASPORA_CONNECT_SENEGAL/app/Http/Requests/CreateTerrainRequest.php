@@ -29,7 +29,7 @@ class CreateTerrainRequest extends FormRequest
             'prix'=> 'required|integer',
             'description'=> 'required',
             'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
-            'type_terrain'=> 'required',
+            // 'type_terrain'=> 'required',
         ];
     }
 
@@ -54,7 +54,7 @@ class CreateTerrainRequest extends FormRequest
             'image.image' => 'Seul les images sont autorisés',
             'image.max' => 'La taille de l\'image est trop grand 50 mo max',
             'image.mimes' => "L'image est invalide",
-            'type_terrain.required'=> "le type de terrain est requis",
+            // 'type_terrain.required'=> "le type de terrain est requis",
             'description.required'=> "la description est requis",
         ];
     }

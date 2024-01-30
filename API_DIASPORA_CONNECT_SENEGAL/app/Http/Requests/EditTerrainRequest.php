@@ -29,7 +29,7 @@ class EditTerrainRequest extends FormRequest
             'prix'=> 'required|integer',
             'description'=> 'required',
             'image' => 'sometimes',
-            'type_terrain'=> 'required',
+            // 'type_terrain'=> 'required',
         ];
     }
 
@@ -52,7 +52,7 @@ class EditTerrainRequest extends FormRequest
             'prix.required'=> "le prix est requis",
             'image.sometimes' => 'l\'image doit être fourni',
             'image.image' => 'Seul les images sont autorisés',
-            'type_terrain.required'=> "le type de terrain est requis",
+            // 'type_terrain.required'=> "le type de terrain est requis",
             'description.required'=> "la description est requis",
         ];
     }

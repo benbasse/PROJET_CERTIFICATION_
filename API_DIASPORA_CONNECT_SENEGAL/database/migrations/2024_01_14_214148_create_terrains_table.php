@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('prix');
             $table->string('description');
             $table->string('image');
-            $table->string('type_terrain');
+            // $table->string('type_terrain');
             $table->timestamps();
         });
     }

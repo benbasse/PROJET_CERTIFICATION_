@@ -33,7 +33,7 @@ class terrainController extends Controller
             $terrain->prix = $request->prix;
             $terrain->description = $request->description;
             $terrain->image = $this->storeImage($request->image);
-            $terrain->type_terrain = $request->type_terrain;
+            // $terrain->type_terrain = $request->type_terrain;
             $terrain->save();
             return response()->json([
                 "status_code" => 200,
@@ -79,7 +79,7 @@ class terrainController extends Controller
                 $terrain->image = $this->storeImage($request->image);
             }
             // $terrain->image = $this->storeImage($request->image);
-            $terrain->type_terrain = $request->type_terrain;
+            // $terrain->type_terrain = $request->type_terrain;
             $terrain->update();
             return response()->json([
                 "status_code" => 200,
