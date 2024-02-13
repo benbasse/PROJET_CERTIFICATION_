@@ -99,23 +99,26 @@ Route::get('categorie/liste', [CategorieController::class, 'index']);
 
 
 // Maison
-Route::post('maison/create', [maisonController::class, 'create']);
-Route::put('maison/edit/{id}', [maisonController::class, 'update']);
-Route::delete('maison/supprimer/{id}', [maisonController::class, 'destroy']);
 
-// Les routes pour les categories
-Route::post('categorie/create', [CategorieController::class, 'store']);
-Route::put('categorie/edit/{id}', [CategorieController::class, 'update']);
-Route::get('categorie/detail/{id}', [CategorieController::class, 'show']);
-Route::delete('categorie/supprimer/{id}', [CategorieController::class, 'destroy']);
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function () {
+    Route::post('maison/create', [maisonController::class, 'create']);
+    Route::put('maison/edit/{id}', [maisonController::class, 'update']);
+    Route::delete('maison/supprimer/{id}', [maisonController::class, 'destroy']);
+
     Route::post('service/demande/refuser/{id}', [DemandeServiceController::class, 'refuserDemande']);
     Route::put('service/demande/accepter/{id}', [DemandeServiceController::class, 'accepterDemande']);
     Route::delete('service/demande/supprimer/{id}', [DemandeServiceController::class, 'deleteDemande']);
 
     Route::put('commentaire/terrain/edit/{id}', [CommentaireTerrainController::class, 'update']);
     Route::delete('commentaire/supprimer/{id}', [commentaireController::class, 'destroy']);
+
+    // Les routes pour les categories
+    Route::post('categorie/create', [CategorieController::class, 'store']);
+    Route::put('categorie/edit/{id}', [CategorieController::class, 'update']);
+    Route::get('categorie/detail/{id}', [CategorieController::class, 'show']);
+    Route::delete('categorie/supprimer/{id}', [CategorieController::class, 'destroy']);
+
 
     //Terrain
     Route::post('terrain/create', [terrainController::class, 'store']);
@@ -152,7 +155,7 @@ Route::middleware(['auth:api', 'acces:admin'])->group(function () {
 
     Route::get('commentaire/terrain/detail/{id}', [CommentaireTerrainController::class, 'show']);
     Route::delete('commentaire/terrain/supprimer/{id}', [CommentaireTerrainController::class, 'destroy']);
-    
+
     Route::put('user/bloquer/{id}', [AuthController::class, 'bloquerUser']);
     Route::put('user/debloquer/{id}', [AuthController::class, 'debloquerUser']);
     Route::get('user/listeBloquer', [AuthController::class, 'userListBloquer']);
