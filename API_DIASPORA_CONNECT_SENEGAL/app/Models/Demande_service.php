@@ -11,11 +11,11 @@ class Demande_service extends Model
 
     public function User()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'users_id');
     }
 
     public function Service()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class, 'services_id');
     }
 }

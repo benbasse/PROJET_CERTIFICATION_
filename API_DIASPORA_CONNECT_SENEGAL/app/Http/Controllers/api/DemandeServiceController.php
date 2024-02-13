@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateDemandeServiceRequest;
 use App\Models\Demande_service;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -15,7 +16,7 @@ class DemandeServiceController extends Controller
         return response()->json([
             "status_code" => 200,
             "status_message" => "liste des demandes",
-            "demandes" => Demande_service::all()
+            "demandes" => Demande_service::with('Service', 'User')->get()
         ]);
     }
 
@@ -24,8 +25,15 @@ class DemandeServiceController extends Controller
         try {
             $demande_service = new Demande_service();
             $demande_service->users_id = auth()->user()->id;
-            $demande_service->services_id = $request->services_id;
-            // dd($demande_service);
+            $service = Service::find($request->services_id);
+            if ($service) {
+                $demande_service->services_id = $service->id;
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message'=> "service n'existe pas"
+                ]);
+            }
             $demande_service->save();
             return response()->json([
                 "status_code" => 200,

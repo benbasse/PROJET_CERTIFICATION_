@@ -19,13 +19,13 @@ class AccessMiddleware
         $user = Auth::user();
 
         if (!$user) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Non autorisé'], 401);
         }
 
         if (in_array($user->role, $roles)) {
             return $next($request);
         }
 
-        return response()->json(['error' => 'Vous n\'etes pas autoriser a acceder a cette page '], 403);
+        return response()->json(['error' => 'Vous n\'etes pas autoriser'], 403);
     }
 }

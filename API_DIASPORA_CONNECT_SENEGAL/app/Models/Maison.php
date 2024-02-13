@@ -11,6 +11,11 @@ class Maison extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'addresse',
+        
+    ];
+
     public function User()
     {
         return $this->hasMany(User::class);
@@ -23,7 +28,7 @@ class Maison extends Model
 
     public function Categorie()
     {
-        return $this->belongsTo(Categorie::class);
+        return $this->belongsTo(Categorie::class, 'categories_id');
     }
 
 }

@@ -65,7 +65,9 @@ Route::middleware(['auth:api', 'acces:user'])->group(function () {
     Route::post('commentaire/article/create', [CommentaireArticleController::class, 'store']);
     Route::get('commentaire/articleListe', [CommentaireArticleController::class, 'listeCommentaire']);
     Route::post('panier1/ajoute/maison', [Panier1Controller::class, 'store']);
-    
+
+    Route::post('update/{id}', [AuthController::class, 'UpdateUser']);
+
 });
 
 // Contacter l'administrateur
@@ -94,20 +96,30 @@ Route::post('newsletter/create', [NewsLetterController::class, 'store']);
 
 Route::get('categorie/liste', [CategorieController::class, 'index']);
 
+
+
+// Maison
+Route::post('maison/create', [maisonController::class, 'create']);
+Route::put('maison/edit/{id}', [maisonController::class, 'update']);
+Route::delete('maison/supprimer/{id}', [maisonController::class, 'destroy']);
+
+// Les routes pour les categories
+Route::post('categorie/create', [CategorieController::class, 'store']);
+Route::put('categorie/edit/{id}', [CategorieController::class, 'update']);
+Route::get('categorie/detail/{id}', [CategorieController::class, 'show']);
+Route::delete('categorie/supprimer/{id}', [CategorieController::class, 'destroy']);
+
 Route::middleware(['auth:api', 'acces:admin'])->group(function () {
     Route::post('service/demande/refuser/{id}', [DemandeServiceController::class, 'refuserDemande']);
     Route::put('service/demande/accepter/{id}', [DemandeServiceController::class, 'accepterDemande']);
     Route::delete('service/demande/supprimer/{id}', [DemandeServiceController::class, 'deleteDemande']);
-    
+
     Route::put('commentaire/terrain/edit/{id}', [CommentaireTerrainController::class, 'update']);
     Route::delete('commentaire/supprimer/{id}', [commentaireController::class, 'destroy']);
-    // Maison
-    Route::post('maison/create', [maisonController::class, 'create']);
-    Route::put('maison/edit/{id}', [maisonController::class, 'update']);
-    Route::delete('maison/supprimer/{id}', [maisonController::class, 'destroy']);
+
     //Terrain
     Route::post('terrain/create', [terrainController::class, 'store']);
-    Route::put('terrain/edit/{id}', [terrainController::class, 'update']);
+    Route::post('terrain/edit/{id}', [terrainController::class, 'update']);
     Route::delete('terrain/supprimer/{id}', [terrainController::class, 'destroy']);
     //Article
     Route::post('article/create', [ArticleController::class, 'store']);
@@ -115,18 +127,14 @@ Route::middleware(['auth:api', 'acces:admin'])->group(function () {
     Route::delete('article/supprimer/{id}', [ArticleController::class, 'destroy']);
     //Service
     Route::post('service/create', [serviceController::class, 'store']);
-    Route::put('service/edit/{id}', [serviceController::class, 'update']);
+    Route::post('service/edit/{id}', [serviceController::class, 'update']);
     Route::delete('service/supprimer/{id}', [serviceController::class, 'destroy']);
     //Demande de services
     Route::get('service/demande/liste', [DemandeServiceController::class, 'index']);
     Route::get('service/demande/detail/{id}', [DemandeServiceController::class, 'show']);
     Route::get('service/demande/listeRefuser', [DemandeServiceController::class, 'listeDemandeRefuser']);
     Route::get('service/demande/listeAccepter', [DemandeServiceController::class, 'listeDemandeAccepter']);
-    // Les routes pour les categories
-    Route::post('categorie/create', [CategorieController::class, 'store']);
-    Route::put('categorie/edit/{id}', [CategorieController::class, 'update']);
-    Route::get('categorie/detail/{id}', [CategorieController::class, 'show']);
-    Route::delete('categorie/supprimer/{id}', [CategorieController::class, 'destroy']);
+
     // Commentaire pour les articles
     Route::delete('commentaire/article/supprimer/{id}', [CommentaireArticleController::class, 'destroy']);
     Route::get('commentaire/article/detail/{id}', [CommentaireArticleController::class, 'show']);
@@ -138,12 +146,18 @@ Route::middleware(['auth:api', 'acces:admin'])->group(function () {
     Route::put('temoignage/accepter/{temoignage}', [TemoignageController::class, 'accepter']);
     Route::delete('temoignage/supprimer/{id}', [TemoignageController::class, 'destroy']);
     Route::get('temoignage/liste/refuser', [TemoignageController::class, 'listeRefuser']);
-    
+
     Route::get('newsletter/liste', [NewsLetterController::class, 'index']);
     Route::delete('newsletter/supprimer/{id}', [NewsLetterController::class, 'destroy']);
-    
+
     Route::get('commentaire/terrain/detail/{id}', [CommentaireTerrainController::class, 'show']);
     Route::delete('commentaire/terrain/supprimer/{id}', [CommentaireTerrainController::class, 'destroy']);
+    
+    Route::put('user/bloquer/{id}', [AuthController::class, 'bloquerUser']);
+    Route::put('user/debloquer/{id}', [AuthController::class, 'debloquerUser']);
+    Route::get('user/listeBloquer', [AuthController::class, 'userListBloquer']);
+    Route::get('user/listeNonBloquer', [AuthController::class, 'userListNonBloquer']);
+    Route::get('users/liste', [AuthController::class, 'index']);
 });
 
 
@@ -151,6 +165,6 @@ Route::middleware(['auth:api', 'acces:admin'])->group(function () {
 
 Route::get('panier1/prixtotal/{userID}', [Panier1Controller::class, 'calculateTotalPrice']);
 
-
+// bloquer user 
 
 

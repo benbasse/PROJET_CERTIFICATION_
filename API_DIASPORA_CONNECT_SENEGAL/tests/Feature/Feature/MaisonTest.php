@@ -15,10 +15,9 @@ class MaisonTest extends TestCase
 
     public function test_create_a_maison(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
         $response = $this->post('api/maison/create', [
             'addresse'=> 'Guediawaye',
@@ -35,10 +34,9 @@ class MaisonTest extends TestCase
 
     public function test_update_a_maison(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
         $response = $this->put('api/maison/edit/1', [
             'addresse'=> 'Guediawaye',
@@ -49,10 +47,9 @@ class MaisonTest extends TestCase
 
     public function test_delete_a_maison(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
         $response = $this->delete('api/maison/supprimer/1');
         $response->assertStatus(200);

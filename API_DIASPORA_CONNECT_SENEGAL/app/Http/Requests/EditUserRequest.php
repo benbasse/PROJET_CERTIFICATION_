@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class EditServiceRequest extends FormRequest
+class EditUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,12 @@ class EditServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titre'=> 'required',
-            'description'=> 'required',
-            'image'=> 'sometimes',
+            'nom'=>'required',
+            'prenom'=>'required',
+            // 'image'=>'required',
+            // 'email'=>'required|unique:users,email|email',
+            // 'password'=>'required|regex:/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(.{8,})$/',
+            'telephone' =>'required|regex:/^7[0-9]{8}$/',
         ];
     }
 
@@ -43,10 +46,15 @@ class EditServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'description.required'=> "la description est requis",
-            'titre.required'=> "le titre est requis",
-            'image.sometimes' => 'l\'image doit être fourni',
-            'image.image' => 'format image invalid',
+            'nom.required'=>'le nom est requis',
+            'prenom.required'=>'le prenom est requis',
+            'image.required'=>'l\'image est requis',
+            // 'email.required'=>'l\'email est requis',
+            // 'email.unique'=>'l\'email existe déja',
+            // 'email.email'=>"format email incorrect",
+            'telephone.required'=>'le numéro de téléphone est requis',
+            'telephone.unique'=>'le numéro telephone est deja utilisé',
+            'telephone.regex'=>'le format du numéro est incorrect',
         ];
     }
 }

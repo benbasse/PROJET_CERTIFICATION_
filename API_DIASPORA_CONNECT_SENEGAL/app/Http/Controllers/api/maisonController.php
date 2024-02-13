@@ -17,9 +17,9 @@ class maisonController extends Controller
     {
         try {
             return response()->json([
-                "status_code" => 200,
-                "status_message" => "Voici la liste des maisons",
-                "maison" => Maison::all(),
+                "status" => 200,
+                "message" => "Voici la liste des maisons 12",
+                "maison" => Maison::with('Categorie')->get(),
             ]);
         } catch (Exception $e) {
             return response()->json($e);
@@ -49,6 +49,10 @@ class maisonController extends Controller
             // if ($maison) {
             //     $maison->notify(new NewsletterNotification());
             // }
+            // Mail::send('forgetPassword', ['token' => $token], function ($message) use ($request) {
+            //     $message->to($request->email);
+            //     $message->subject('Reset Password');
+            // });
             return response()->json([
                 'status_code' => 200,
                 'status_message' => 'La maison a été ajouter',
@@ -87,7 +91,6 @@ class maisonController extends Controller
 
     public function update(EditMaisonRequest $request, $id, Maison $maison)
     {
-
         try {
             $maison = Maison::find($id);
             if (!$maison) {

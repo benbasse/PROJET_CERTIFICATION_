@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->integer('telephone');
             $table->string('image');
+            $table->boolean('est_bloquer')->default(false);
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

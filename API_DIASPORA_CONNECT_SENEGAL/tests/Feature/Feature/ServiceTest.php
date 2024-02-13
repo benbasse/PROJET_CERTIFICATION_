@@ -5,6 +5,7 @@ namespace Tests\Feature\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class ServiceTest extends TestCase
@@ -15,25 +16,24 @@ class ServiceTest extends TestCase
 
     public function test_create_service(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
-        $response = $this->post('api/service/create', [
+        $data = [
             'titre' => 'title 1',
             'description' => 'this is the description',
-            'image' => 'image.png',
-        ]);
+            'image' => UploadedFile::fake()->create('document.png'),
+        ];
+        $response = $this->post("api/service/create",$data);
         $response->assertStatus(200);
     }
 
     public function test_delete_service(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
         $response = $this->delete('api/service/supprimer/1');
         $response->assertStatus(200);
@@ -41,10 +41,9 @@ class ServiceTest extends TestCase
     
     public function test_show_service_with_id(): void
     {
-        $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
-            'email' => $user->email,
-            'password' => 'password',
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
         ]);
         $response = $this->get('api/service/detail/1');
         $response->assertStatus(200);

@@ -2,72 +2,83 @@
 
 namespace Tests\Feature\Feature;
 
-use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class DemandeServiceTest extends TestCase
+class TemoignageTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_demande_service(): void
+    public function test_create_temoignage(): void
     {
         $user = User::factory()->create();
         $response = $this->post('/api/auth/login', [
             'email' => $user->email,
-            'password' => 'password',
+            'password' => $user->password,
         ]);
         $user->currentAccessToken();
-        $response = $this->post('/api/service/demande/create',[
+        $response = $this->post('/api/temoignage/create',[
             'users_id' => $user->id,
-            'services_id'=> 1
+            'contenue'=> 'this is the temoignage'
         ]);
         $response->assertStatus(200);
     }
 
-    public function test_liste_demande_service(): void
-    {
-        $response = $this->post('/api/auth/login', [
-            'email' => 'admin@gmail.com',
-            'password' => 'azertyuiop',
-        ]);
-        $response = $this->get('/api/service/demande/liste');
-        $response->assertStatus(200);
-    }
-
-    public function test_liste_demande_accepter_service(): void
-    {
-        $response = $this->post('/api/auth/login', [
-            'email' => 'admin@gmail.com',
-            'password' => 'azertyuiop',
-        ]);
-        $response = $this->get('/api/service/demande/listeAccepter');
-        $response->assertStatus(200);
-    }
-
-    public function test_liste_demande_refuser_service(): void
-    {
-        $response = $this->post('/api/auth/login', [
-            'email' => 'admin@gmail.com',
-            'password' => 'azertyuiop',
-        ]);
-        $response = $this->get('/api/service/demande/listeRefuser');
-        $response->assertStatus(200);
-    }
-
-    public function test_accepter_demande_service(): void
+    public function test_accepter_temoignage(): void
     {
         $response = $this->post('/api/auth/login', [
             'email' => 'admin@gmail.com',
             'password' => 'azertyuiop',
         ]);  
-        $response = $this->put('/api/service/demande/accepter/1',[
-            'est_accepter'=> 'accepter'
+        $response = $this->put('/api/temoignage/accepter/1',[
+            'status'=> 'accepter'
         ]);
         $response->assertStatus(200);
     }
 
+    public function test_refuser_temoignage(): void
+    {
+        $response = $this->post('/api/auth/login', [
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
+        ]);  
+        $response = $this->put('/api/temoignage/refuser/1',[
+            'staut'=> 'accepter'
+        ]);
+        $response->assertStatus(200);
+    }
+
+    public function test_liste_accepter_temoignage(): void
+    {
+        $response = $this->post('/api/auth/login', [
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
+        ]);  
+        $response = $this->get('/api/temoignage/liste/accepter');
+        $response->assertStatus(200);
+    }
+
+    public function test_liste_refuser_temoignage(): void
+    {
+        $response = $this->post('/api/auth/login', [
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
+        ]);  
+        $response = $this->get('/api/temoignage/liste/refuser');
+        $response->assertStatus(200);
+    }
+
+
+    public function test_liste_en_attente_temoignage(): void
+    {
+        $response = $this->post('/api/auth/login', [
+            'email' => 'admin@gmail.com',
+            'password' => 'azertyuiop',
+        ]);  
+        $response = $this->get('/api/temoignage/liste/enattente');
+        $response->assertStatus(200);
+    }
 }

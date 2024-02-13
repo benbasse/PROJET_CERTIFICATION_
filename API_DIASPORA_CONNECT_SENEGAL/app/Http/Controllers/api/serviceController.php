@@ -80,17 +80,25 @@ class serviceController extends Controller
     {
         try {
             $service = Service::find($id);
-            $service->titre = $request->titre;
-            $service->description = $request->description;
-            if ($request->hasFile('image')) {
-                $service->image = $this->storeImage($request->image);
+            // dd($request);
+            if (!$service) {
+                return response()->json([
+                    "status"=> 404,
+                    "message"=> " service non trouve"
+                ]);
+            } else {
+                $service->titre = $request->titre;
+                $service->description = $request->description;
+                if ($request->hasFile('image')) {
+                    $service->image = $this->storeImage($request->image);
+                }
+                $service->update();
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'Service modifier avec success',
+                    'service' => $service,
+                ]);
             }
-            $service->save();
-            return response()->json([
-                'status_code' => 200,
-                'status_message' => 'Service modifier avec success',
-                'service' => $service,
-            ]);
         } catch (Exception $e) {
             return response()->json($e);
         }

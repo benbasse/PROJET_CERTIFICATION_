@@ -9,6 +9,12 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'titre', 
+        'image', 
+        'description'
+    ];
+
     public function User()
     {
         return $this->hasMany(User::class);
