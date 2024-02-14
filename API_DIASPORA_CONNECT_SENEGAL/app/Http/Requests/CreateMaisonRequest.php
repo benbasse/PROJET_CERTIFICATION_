@@ -26,7 +26,7 @@ class CreateMaisonRequest extends FormRequest
         return [
             'addresse'=> 'required',
             'superficie'=> 'required|integer',
-            'prix'=> 'required|',
+            'prix'=> 'required|integer',
             'description'=> 'required',
             'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
             'annee_construction'=> 'required|date',
@@ -48,13 +48,15 @@ class CreateMaisonRequest extends FormRequest
         return [
             'addresse.required'=> "addresse ne peut pas être null",
             'superficie.required'=> "la superficie est requis",
-            'superficie.number'=> "le format de la superficie est incorrect",
+            'superficie.integer'=> "le format de la superficie est incorrect", 
             'prix.required'=> "le prix est requis",
+            'prix.integer'=> "le prix est incorrect",
             'image.required' => 'l\'image doit être fourni',
             'image.image' => 'Seul les images sont autorisés',
             'image.max' => 'La taille de l\'image est trop grand 50 mo max',
             'image.mimes' => "L'image est invalide",
-            'annee_construction.required'=> "l'annee de construction est requis",
+            'annee_construction.required'=> "la date de construction est requis",
+            'annee_construction.date'=> "le format date est incorrect",
             'description.required'=> "la description est requis",
         ];
     }

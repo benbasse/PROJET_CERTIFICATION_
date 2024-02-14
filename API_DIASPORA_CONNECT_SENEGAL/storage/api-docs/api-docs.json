@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API CERTIFICATION",
-        "description": "Documentaion de l'API",
+        "title": "API DIASPORA CONNECT",
+        "description": "Your API Description",
         "version": "1.0.0"
     },
     "security": [
@@ -2768,9 +2768,6 @@
                                     "annee_construction": {
                                         "type": "string"
                                     },
-                                    "nombre_etage": {
-                                        "type": "integer"
-                                    },
                                     "categories_id": {
                                         "type": "integer"
                                     }
@@ -2783,7 +2780,6 @@
                                 "description": "this is the description",
                                 "image": "image/M6eTb4DYdiHNxNQWaA555kWxjyENMBYMS8Ljjjwc.png",
                                 "annee_construction": "2021-12-12",
-                                "nombre_etage": 12,
                                 "categories_id": 1
                             }
                         }
@@ -2898,9 +2894,6 @@
                                     "annee_construction": {
                                         "type": "string"
                                     },
-                                    "nombre_etage": {
-                                        "type": "string"
-                                    },
                                     "description": {
                                         "type": "string"
                                     },
@@ -2918,7 +2911,6 @@
                                     "format": "binary"
                                 },
                                 "annee_construction": "2021-12-12",
-                                "nombre_etage": "12",
                                 "description": "this is the first house",
                                 "categories_id": "1"
                             }
