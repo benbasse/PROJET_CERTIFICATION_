@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API CERTIFICATION",
-        "description": "API Description",
+        "description": "Documentaion de l'API",
         "version": "1.0.0"
     },
     "security": [
@@ -23,6 +23,174 @@
         "multipart/form-data"
     ],
     "paths": {
+        "/api/user/listeBloquer": {
+            "get": {
+                "summary": "Liste des users bloquer",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ADMIN"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/user/listeNonBloquer": {
+            "get": {
+                "summary": "Liste users",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ADMIN"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/user/debloquer/{id}": {
+            "put": {
+                "summary": "Debloquer user",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ADMIN"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/user/bloquer/{id}": {
+            "put": {
+                "summary": "bloquer user",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ADMIN"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
         "/api/auth/logout": {
             "post": {
                 "summary": "deconnexion",
@@ -204,7 +372,7 @@
                     }
                 },
                 "tags": [
-                    "Whatsapp"
+                    "WHATSAPP"
                 ],
                 "parameters": []
             }
@@ -252,7 +420,7 @@
                     }
                 },
                 "tags": [
-                    "News Letter"
+                    "NEWSLETTER"
                 ],
                 "parameters": [
                     {
@@ -297,7 +465,7 @@
                     }
                 },
                 "tags": [
-                    "News Letter"
+                    "NEWSLETTER"
                 ],
                 "parameters": []
             }
@@ -345,7 +513,7 @@
                     }
                 },
                 "tags": [
-                    "News Letter"
+                    "NEWSLETTER"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -401,7 +569,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": [
                     {
@@ -446,7 +614,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": [
                     {
@@ -491,7 +659,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": []
             }
@@ -530,7 +698,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": []
             }
@@ -569,7 +737,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": []
             }
@@ -617,7 +785,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": [
                     {
@@ -662,7 +830,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": [
                     {
@@ -707,7 +875,7 @@
                     }
                 },
                 "tags": [
-                    "Temoignage"
+                    "TEMOIGNAGE"
                 ],
                 "parameters": []
             }
@@ -755,7 +923,7 @@
                     }
                 },
                 "tags": [
-                    "Commentaire Article"
+                    "COMMENTAIRE ARTICLE"
                 ],
                 "parameters": [
                     {
@@ -800,7 +968,7 @@
                     }
                 },
                 "tags": [
-                    "Commentaire Article"
+                    "COMMENTAIRE ARTICLE"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -856,7 +1024,7 @@
                     }
                 },
                 "tags": [
-                    "Commentaire Article"
+                    "COMMENTAIRE ARTICLE"
                 ],
                 "parameters": [
                     {
@@ -901,7 +1069,7 @@
                     }
                 },
                 "tags": [
-                    "Commentaire Article"
+                    "COMMENTAIRE ARTICLE"
                 ],
                 "parameters": []
             }
@@ -949,7 +1117,7 @@
                     }
                 },
                 "tags": [
-                    "Commentaire Article"
+                    "COMMENTAIRE ARTICLE"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -967,8 +1135,8 @@
                                 }
                             },
                             "example": {
-                                "contenue": "Mon commentaire",
-                                "articles_id": 1
+                                "contenue": "Mon commentaire 4 ",
+                                "articles_id": 2
                             }
                         }
                     }
@@ -1018,7 +1186,7 @@
                     }
                 },
                 "tags": [
-                    "Categorie"
+                    "CATEGORIE"
                 ],
                 "parameters": [
                     {
@@ -1063,7 +1231,7 @@
                     }
                 },
                 "tags": [
-                    "Categorie"
+                    "CATEGORIE"
                 ],
                 "parameters": [
                     {
@@ -1129,7 +1297,7 @@
                     }
                 },
                 "tags": [
-                    "Categorie"
+                    "CATEGORIE"
                 ],
                 "parameters": [
                     {
@@ -1174,7 +1342,7 @@
                     }
                 },
                 "tags": [
-                    "Categorie"
+                    "CATEGORIE"
                 ],
                 "parameters": []
             }
@@ -1222,7 +1390,7 @@
                     }
                 },
                 "tags": [
-                    "Categorie"
+                    "CATEGORIE"
                 ],
                 "parameters": [],
                 "requestBody": {
@@ -1452,13 +1620,7 @@
                 "tags": [
                     "DEMANDE SERVICE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/service/demande/liste": {
@@ -1846,240 +2008,6 @@
                 }
             }
         },
-        "/api/commentaire/terrain/supprimer/{id}": {
-            "delete": {
-                "summary": "supprimer terrain",
-                "description": "",
-                "responses": {
-                    "204": {
-                        "description": "Deleted successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorize",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE TERRAIN"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/api/commentaire/terrain/edit/{id}": {
-            "put": {
-                "summary": "modifier terrain",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE TERRAIN"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "contenue": {
-                                        "type": "string"
-                                    },
-                                    "terrains_id": {
-                                        "type": "integer"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "contenue": "contenue mis a jour",
-                                "terrains_id": 1
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/commentaire/terrain/detail/{id}": {
-            "get": {
-                "summary": "detail commentaire",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE TERRAIN"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/api/commentaire/terrain/create": {
-            "post": {
-                "summary": "ajouter commentaire",
-                "description": "",
-                "responses": {
-                    "201": {
-                        "description": "Created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorize",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE TERRAIN"
-                ],
-                "parameters": [],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "contenue": {
-                                        "type": "string"
-                                    },
-                                    "terrains_id": {
-                                        "type": "integer"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "contenue": "commentaire terrain",
-                                "terrains_id": 11
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/service/supprimer/{id}": {
             "delete": {
                 "summary": "supprimer service",
@@ -2365,285 +2293,6 @@
                 "parameters": []
             }
         },
-        "/api/commentaire/supprimer/{id}": {
-            "delete": {
-                "summary": "supprimer commentaire",
-                "description": "",
-                "responses": {
-                    "204": {
-                        "description": "Deleted successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorize",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE MAISON"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/api/commentaire/edit/1": {
-            "put": {
-                "summary": "modifier commentaire",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE MAISON"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Accept",
-                        "type": "string"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "contenue": {
-                                        "type": "string"
-                                    },
-                                    "maisons_id": {
-                                        "type": "integer"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "contenue": "contenue modifier",
-                                "maisons_id": 1
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/commentaire/detail/{id}": {
-            "get": {
-                "summary": "detail commentaire",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE MAISON"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/api/commentaire/liste": {
-            "get": {
-                "summary": "liste commentaire",
-                "description": "",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE MAISON"
-                ],
-                "parameters": []
-            }
-        },
-        "/api/commentaire/create": {
-            "post": {
-                "summary": "ajouter commentaire",
-                "description": "",
-                "responses": {
-                    "201": {
-                        "description": "Created successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorize",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE MAISON"
-                ],
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Accept",
-                        "type": "string"
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "contenue": {
-                                        "type": "string"
-                                    },
-                                    "maisons_id": {
-                                        "type": "integer"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "contenue": "my comment",
-                                "maisons_id": 3
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/api/terrain/supprimer/{id}": {
             "delete": {
                 "summary": "supprimer terrain",
@@ -2734,7 +2383,13 @@
                 "tags": [
                     "TERRAIN"
                 ],
-                "parameters": [],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -2926,7 +2581,7 @@
                                         "type": "string",
                                         "format": "binary"
                                     },
-                                    "type_terrain": {
+                                    "": {
                                         "type": "string"
                                     }
                                 }
@@ -2940,14 +2595,14 @@
                                     "type": "string",
                                     "format": "binary"
                                 },
-                                "type_terrain": "Angle"
+                                "": ""
                             }
                         }
                     }
                 }
             }
         },
-        "/api/maison/detail/2": {
+        "/api/maison/detail/{id}": {
             "get": {
                 "summary": "detail maison",
                 "description": "",
@@ -2983,7 +2638,13 @@
                 "tags": [
                     "MAISON"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "{id}",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/maison/supprimer/{id}": {
@@ -3264,6 +2925,60 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/auth/update/{id}": {
+            "post": {
+                "summary": "modifier compte",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorize",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "UTILISATEUR"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/auth/me": {
