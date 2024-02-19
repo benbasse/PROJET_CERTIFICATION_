@@ -68,9 +68,16 @@ class terrainController extends Controller
     }
 
 
-    public function update(EditTerrainRequest $request, Terrain $terrain)
+    public function update(EditTerrainRequest $request, $id)
     {
         try {
+            $terrain = Terrain::find($id);
+            if (!$terrain) {
+                return response()->json([
+                    "status_code" => 404,
+                    "status_messages" => "Cet terrain n'existe pas"
+                ]);
+             } else {
             $terrain->addresse = $request->addresse;
             $terrain->superficie = $request->superficie;
             $terrain->prix = $request->prix;
@@ -86,7 +93,7 @@ class terrainController extends Controller
                 "status_message" => " Modification reussi",
                 "terrain" => $terrain
             ]);
-
+        }
         } catch (Exception $e) {
             return response()->json($e);
         }
