@@ -42,7 +42,7 @@ class CreateMessageRequest extends FormRequest
     public function messages()
     {
         return  [
-            'messages.required'=> 'le message ne peut pas être null',
+            'message.required'=> 'le message ne peut pas être null',
             'email.required'=> "l'email est requis",
             'email.email'=> "email invalide"
         ];
