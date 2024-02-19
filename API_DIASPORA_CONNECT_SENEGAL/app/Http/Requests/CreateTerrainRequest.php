@@ -48,8 +48,9 @@ class CreateTerrainRequest extends FormRequest
         return [
             'addresse.required'=> "addresse ne peut pas être null",
             'superficie.required'=> "la superficie est requis",
-            'superficie.number'=> "le format de la superficie est incorrect",
+            'superficie.integer'=> "le format de la superficie est incorrect",
             'prix.required'=> "le prix est requis",
+            'prix.integer'=> "le prix est invalide",
             'image.required' => 'l\'image doit être fourni',
             'image.image' => 'Seul les images sont autorisés',
             'image.max' => 'La taille de l\'image est trop grand 50 mo max',
