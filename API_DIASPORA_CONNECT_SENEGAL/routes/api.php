@@ -7,6 +7,7 @@ use App\Http\Controllers\api\commentaireController;
 use App\Http\Controllers\api\CommentaireTerrainController;
 use App\Http\Controllers\api\DemandeServiceController;
 use App\Http\Controllers\api\maisonController;
+use App\Http\Controllers\api\MessagesController;
 use App\Http\Controllers\api\NewsLetterController;
 use App\Http\Controllers\api\serviceController;
 use App\Http\Controllers\api\TemoignageController;
@@ -93,12 +94,15 @@ Route::get('temoignage/liste/accepter', [TemoignageController::class, 'listeAcce
 //les routes pour les newsletter
 Route::post('newsletter/create', [NewsLetterController::class, 'store']);
 
-
 Route::get('categorie/liste', [CategorieController::class, 'index']);
 
 
 
-// Maison
+// Messages 
+Route::get('messages/listes', [MessagesController::class, 'index']);
+Route::post('messages/create', [MessagesController::class, 'store']);
+Route::get('messages/details/{id}', [MessagesController::class, 'show']);
+Route::get('messages/supprimer/{id}', [MessagesController::class, 'destroy']);
 
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function () {
