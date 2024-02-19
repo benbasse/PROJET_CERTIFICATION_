@@ -25,7 +25,7 @@ class CreateArticleRequest extends FormRequest
     {
         return [
             "titre"=> "required",
-            "description"=> "required",
+            "description"=> "required|string",
             "image"=> 'required|image|max:10000|mimes:jpeg,png,jpg',
         ];
     }
@@ -44,6 +44,7 @@ class CreateArticleRequest extends FormRequest
     {
         return [
             'description.required'=> "la description est requis",
+            'description.string'=> "la description doit contenir que des lettres",
             'titre.required'=> "le titre est requis",
             'image.required' => 'l\'image doit être fourni',
             'image.image' => 'Seul les images sont autorisés',
