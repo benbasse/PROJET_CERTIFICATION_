@@ -24,10 +24,10 @@ class CreateMaisonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'addresse'=> 'required',
+            'addresse'=> 'required|string',
             'superficie'=> 'required|integer',
             'prix'=> 'required|integer',
-            'description'=> 'required',
+            'description'=> 'required|string',
             'image' => 'required|image|max:10000|mimes:jpeg,png,jpg',
             'annee_construction'=> 'required|date',
         ];
@@ -58,6 +58,7 @@ class CreateMaisonRequest extends FormRequest
             'annee_construction.required'=> "la date de construction est requis",
             'annee_construction.date'=> "le format date est incorrect",
             'description.required'=> "la description est requis",
+            'description.string'=> "la description doit contenir que des lettres",
         ];
     }
 }
