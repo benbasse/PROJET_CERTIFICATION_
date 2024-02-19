@@ -102,7 +102,7 @@ Route::get('categorie/liste', [CategorieController::class, 'index']);
 Route::get('messages/listes', [MessagesController::class, 'index']);
 Route::post('messages/create', [MessagesController::class, 'store']);
 Route::get('messages/details/{id}', [MessagesController::class, 'show']);
-Route::get('messages/supprimer/{id}', [MessagesController::class, 'destroy']);
+Route::delete('messages/supprimer/{id}', [MessagesController::class, 'destroy']);
 
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function () {
