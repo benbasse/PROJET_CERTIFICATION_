@@ -5,9 +5,12 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateArticleRequest;
 use App\Http\Requests\EditArticleRequest;
+use App\Mail\ArticleNews;
 use App\Models\Article;
+use App\Models\Newsletter;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends Controller
 {
@@ -26,21 +29,28 @@ class ArticleController extends Controller
 
     public function store(CreateArticleRequest $request)
     {
-        try {
+        // try {
+            $userNewsLetter = Newsletter::all();
             $article = new Article();
             $article->titre = $request->titre;
             $article->description = $request->description;
             $article->image = $this->storeImage($request->image);
-            $article->save();
+            if ($article->save()) {
+                foreach ($userNewsLetter as $basse) {
+                    Mail::to($basse->email)->send(new ArticleNews($article));
+                }
+            }
+            // return view('Mail.news', compact('article'));
             return response()->json([
                 "status_code" => 200,
                 "message" => "article creer",
                 "article" => $article
             ]);
-        } catch (Exception $e) {
-            return response()->json($e);
-        }
     }
+
+    
+
+
 
     private function storeImage($image)
     {
@@ -82,7 +92,7 @@ class ArticleController extends Controller
                 $article->description = $request->description;
                 if ($request->hasFile('image')) {
                     $article->image = $this->storeImage($request->image);
-                } 
+                }
                 $article->save();
                 return response()->json([
                     'status_code' => 200,
@@ -117,6 +127,6 @@ class ArticleController extends Controller
     }
 
 
-    
+
 
 }
