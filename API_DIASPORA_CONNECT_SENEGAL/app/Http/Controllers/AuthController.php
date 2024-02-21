@@ -134,6 +134,9 @@ class AuthController extends Controller
             $user->prenom = $request->prenom;
             $user->telephone = $request->telephone;
             $user->email = $request->email;
+            if ($request->hasFile('image')) {
+                $user->image = $this->storeImage($request->image);
+            }
             $user->save();
             return response()->json([
                 'status_code' => 200,
