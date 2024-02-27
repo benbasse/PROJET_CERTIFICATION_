@@ -239,4 +239,76 @@ class TemoignageController extends Controller
         }
     }
 
+    public function MyTemoignageAttente()
+    {
+        try {
+            if (auth()->user()) {
+                $temoignage = Temoignage::where('users_id', auth()->user()->id)
+                    ->where('statut', 'attente')->get();
+            }
+            if ($temoignage->isEmpty()) {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'Pas de temoignage en attente',
+                ]);
+            } else {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'liste de mes temoignages en attente',
+                    'temoignages' => $temoignage
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function MyTemoignageAccepter()
+    {
+        try {
+            if (auth()->user()) {
+                $temoignage = Temoignage::where('users_id', auth()->user()->id)
+                    ->where('statut', 'accepter')->get();
+            }
+            if ($temoignage->isEmpty()) {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'Pas de temoignage accepter',
+                ]);
+            } else {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'liste de mes temoignages accepter',
+                    'temoignages' => $temoignage
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function MyTemoignageRefuser()
+    {
+        try {
+            if (auth()->user()) {
+                $temoignage = Temoignage::where('users_id', auth()->user()->id)
+                    ->where('statut', 'refuser')->get();
+            }
+            if ($temoignage->isEmpty()) {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'Pas de temoignage refuser',
+                ]);
+            } else {
+                return response()->json([
+                    'status_code' => 200,
+                    'status_message' => 'liste de mes temoignages refuser',
+                    'temoignages' => $temoignage
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
 }
