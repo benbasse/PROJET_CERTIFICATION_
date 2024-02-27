@@ -69,6 +69,10 @@ Route::middleware(['auth:api', 'acces:user'])->group(function () {
 
     Route::post('update/{id}', [AuthController::class, 'UpdateUser']);
 
+    Route::get('temoigngage/MestemoignageAttente', [TemoignageController::class, 'MyTemoignageAttente']);
+    Route::get('temoigngage/MestemoignageAccepter', [TemoignageController::class, 'MyTemoignageAccepter']);
+    Route::get('temoigngage/MestemoignageRefuser', [TemoignageController::class, 'MyTemoignageRefuser']);
+
 });
 
 // Contacter l'administrateur
