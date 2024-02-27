@@ -26,8 +26,9 @@ class EditUserRequest extends FormRequest
         return [
             'nom'=>'required',
             'prenom'=>'required',
-            // 'image'=>'required',
-            // 'email'=>'required|unique:users,email|email',
+            'image'=>'sometimes',
+            // 'email'=>'unique:users,email|email',
+            'email'=>'required|email',
             // 'password'=>'required|regex:/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=!])(.{8,})$/',
             'telephone' =>'required|regex:/^7[0-9]{8}$/',
         ];
@@ -49,9 +50,9 @@ class EditUserRequest extends FormRequest
             'nom.required'=>'le nom est requis',
             'prenom.required'=>'le prenom est requis',
             'image.required'=>'l\'image est requis',
-            // 'email.required'=>'l\'email est requis',
+            'email.required'=>'l\'email est requis',
             // 'email.unique'=>'l\'email existe déja',
-            // 'email.email'=>"format email incorrect",
+            'email.email'=> 'format email est incorrect',
             'telephone.required'=>'le numéro de téléphone est requis',
             'telephone.unique'=>'le numéro telephone est deja utilisé',
             'telephone.regex'=>'le format du numéro est incorrect',
