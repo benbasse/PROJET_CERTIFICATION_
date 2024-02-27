@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\ArticleController;
 use App\Http\Controllers\api\PayementController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,5 @@ Route::get('ipn', [PayementController::class, 'ipn'])->name('paytech-ipn');
 Route::get('payment-success/{code}', [PayementController::class, 'success'])->name('payment.success');
 Route::get('payment/{code}/success', [PayementController::class, 'paymentSuccessView'])->name('payment.success.view');
 Route::get('payment-cancel', [PayementController::class, 'cancel'])->name('paytech.cancel');
+
+Route::get('news', [ArticleController::class, 'store']);
