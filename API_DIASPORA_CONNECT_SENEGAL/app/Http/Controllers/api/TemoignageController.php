@@ -68,7 +68,6 @@ class TemoignageController extends Controller
                     "message" => "temoignage non trouver"
                 ]);
             } else {
-
                 return response()->json([
                     "status" => 200,
                     "message" => "detail du temoignage",
