@@ -34,17 +34,25 @@ class NewsLetterController extends Controller
     public function store(CreateNewsletterRequest $request)
     {
         try {
+            $existingNewsletter = Newsletter::where('email', $request->email)->first(); 
+            if ($existingNewsletter) {
+                return response()->json([
+                    "status" => "error",
+                    "message" => "L'email existe déjà"
+                ]);
+            }   
             $newsletter = new Newsletter();
             $newsletter->email = $request->email;
-            $newsletter->save();
+            $newsletter->save();   
             return response()->json([
                 "status" => "success",
-                "message" => "email ajouter"
+                "message" => "Email ajouté"
             ]);
         } catch (Exception $e) {
             return response()->json($e);
         }
     }
+    
 
     /**
      * Display the specified resource.
