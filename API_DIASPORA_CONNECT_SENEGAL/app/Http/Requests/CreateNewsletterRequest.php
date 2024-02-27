@@ -24,7 +24,8 @@ class CreateNewsletterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=>'required|unique:newsletters,email|email',
+            // 'email'=>'required|unique:newsletters,email|email',
+            'email'=>'required|email',
         ];
     }
 
