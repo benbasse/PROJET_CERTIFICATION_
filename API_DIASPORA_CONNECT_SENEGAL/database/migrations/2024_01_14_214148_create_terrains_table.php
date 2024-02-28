@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('terrains', function (Blueprint $table) {
             $table->id();
             $table->string('addresse');
+            $table->boolean('est_acheter')->default(false);
             $table->integer('superficie');
             $table->integer('prix');
             $table->string('description');
