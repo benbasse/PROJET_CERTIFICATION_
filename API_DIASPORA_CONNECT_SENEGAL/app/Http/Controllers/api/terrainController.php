@@ -124,4 +124,95 @@ class terrainController extends Controller
         return $image->store('terrain', 'public');
     }
 
+
+    // les nouvelles fonctionnalites
+
+    public function Acheter(Terrain $terrain)
+    {
+        try {
+            $terrain = Terrain::where('est_acheter',true)->get();
+            if ($terrain->isEmpty()) {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Pas de terrain acheter pour le moment",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Voici la liste des terrains achetes",
+                    "terrain" => $terrain,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function NonAcheter(Terrain $terrain)
+    {
+        try {
+            $terrain = Terrain::where('est_acheter',false)->get();
+            if ($terrain->isEmpty()) {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Tous les terrains ont ete vendu",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Voici la liste des terrains non acheter",
+                    "terrain" => $terrain,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function Vendre($id)
+    {
+        try {
+            $terrain = Terrain::find($id);
+            if ($terrain) {
+                $terrain->update([
+                    'est_acheter' => 1
+                ]);
+                return response()->json([
+                    "status" => 201,
+                    "message" => "Terrain vendu",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 404,
+                    "message" => "Cette terrain n'existe pas",
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function NonVendre($id)
+    {
+        try {
+            $terrain = Terrain::find($id);
+            if ($terrain) {
+                $terrain->update([
+                    'est_acheter' => 0
+                ]);
+                return response()->json([
+                    "status" => 201,
+                    "message" => "Vente rejeter",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 404,
+                    "message" => "Cette terrain n'existe pas",
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
 }
