@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('superficie');
             $table->integer('prix');
             $table->string('description');
+            $table->boolean('est_acheter')->default(false);
             $table->string('image');
             $table->date('annee_construction');
             $table->unsignedBigInteger('categories_id');
