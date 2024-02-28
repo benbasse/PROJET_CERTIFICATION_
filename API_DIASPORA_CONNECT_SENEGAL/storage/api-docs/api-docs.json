@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API DIASPORA CONNECT",
-        "description": "Your API Description",
+        "title": "Diaspora Connect",
+        "description": "Description de l'API",
         "version": "1.0.0"
     },
     "security": [
@@ -23,6 +23,207 @@
         "multipart/form-data"
     ],
     "paths": {
+        "/api/messages/supprimer/{id}": {
+            "delete": {
+                "summary": "Supprimer Message",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorize",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MESSAGES"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/messages/details/1": {
+            "get": {
+                "summary": "Detail message",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MESSAGES"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/messages/create": {
+            "post": {
+                "summary": "Ajouter messages",
+                "description": "",
+                "responses": {
+                    "201": {
+                        "description": "Created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorize",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MESSAGES"
+                ],
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "message": "This is the message",
+                                "email": "moussa@gmail.com"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/messages/listes": {
+            "get": {
+                "summary": "liste des messages",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MESSAGES"
+                ],
+                "parameters": []
+            }
+        },
         "/api/user/listeBloquer": {
             "get": {
                 "summary": "Liste des users bloquer",
@@ -796,7 +997,7 @@
                 ]
             }
         },
-        "/api/temoignage/detail/{id}": {
+        "/api/temoignage/detail/1": {
             "get": {
                 "summary": "detail temoignage",
                 "description": "",
@@ -832,13 +1033,7 @@
                 "tags": [
                     "TEMOIGNAGE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/temoignage/liste": {
@@ -878,60 +1073,6 @@
                     "TEMOIGNAGE"
                 ],
                 "parameters": []
-            }
-        },
-        "/api/commentaire/article/supprimer/{id}": {
-            "delete": {
-                "summary": "Supprimer commentaire",
-                "description": "",
-                "responses": {
-                    "204": {
-                        "description": "Deleted successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Unauthorize",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": ""
-                            }
-                        }
-                    }
-                },
-                "tags": [
-                    "COMMENTAIRE ARTICLE"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
             }
         },
         "/api/commentaire/articleListe": {
@@ -990,7 +1131,61 @@
                 }
             }
         },
-        "/api/commentaire/article/detail/{id}": {
+        "/api/commentaire/article/supprimer/{id}": {
+            "delete": {
+                "summary": "supprimer commentaire",
+                "description": "",
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Unauthorize",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "COMMENTAIRE ARTICLE"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/commentaire/article/detail/10": {
             "get": {
                 "summary": "details commentaire",
                 "description": "",
@@ -1026,13 +1221,7 @@
                 "tags": [
                     "COMMENTAIRE ARTICLE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/commentaire/article/liste": {
@@ -1263,7 +1452,7 @@
                 }
             }
         },
-        "/api/categorie/detail/{id}": {
+        "/api/categorie/detail/1": {
             "get": {
                 "summary": "detail categorie",
                 "description": "",
@@ -1299,13 +1488,7 @@
                 "tags": [
                     "CATEGORIE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/categorie/liste": {
@@ -1452,13 +1635,7 @@
                 "tags": [
                     "DEMANDE SERVICE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/service/demande/accepter/{id}": {
@@ -1584,7 +1761,7 @@
                 "parameters": []
             }
         },
-        "/api/service/demande/detail/{id}": {
+        "/api/service/demande/detail/1": {
             "get": {
                 "summary": "detail demande",
                 "description": "",
@@ -1847,7 +2024,7 @@
                 }
             }
         },
-        "/api/article/detail/{id}": {
+        "/api/article/detail/1": {
             "get": {
                 "summary": "detail article",
                 "description": "",
@@ -1883,13 +2060,7 @@
                 "tags": [
                     "ARTICLE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/article/liste": {
@@ -2209,7 +2380,7 @@
                 }
             }
         },
-        "/api/service/detail/{id}": {
+        "/api/service/detail/1": {
             "get": {
                 "summary": "detail service",
                 "description": "",
@@ -2245,13 +2416,7 @@
                 "tags": [
                     "SERVICE"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/service/liste": {
@@ -2289,6 +2454,174 @@
                 },
                 "tags": [
                     "SERVICE"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/terrain/Nonvendu/{id}": {
+            "put": {
+                "summary": "Annuler la vente Terrain",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TERRAIN"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/terrain/vendu/{id}": {
+            "put": {
+                "summary": "Vendre Terrain",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TERRAIN"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/terrain/TerrainNonAcheter": {
+            "get": {
+                "summary": "Liste terrain non vendu",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TERRAIN"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/terrain/TerrainAcheter": {
+            "get": {
+                "summary": "Liste terrain vendu",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "TERRAIN"
                 ],
                 "parameters": []
             }
@@ -2338,13 +2671,7 @@
                 "tags": [
                     "TERRAIN"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/terrain/edit/{id}": {
@@ -2429,7 +2756,7 @@
                 }
             }
         },
-        "/api/terrain/detail/{id}": {
+        "/api/terrain/detail/4": {
             "get": {
                 "summary": "detail terrain",
                 "description": "",
@@ -2465,13 +2792,7 @@
                 "tags": [
                     "TERRAIN"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/terrain/liste": {
@@ -2602,9 +2923,9 @@
                 }
             }
         },
-        "/api/maison/detail/{id}": {
-            "get": {
-                "summary": "detail maison",
+        "/api/maison/Nonvendu/{id}": {
+            "put": {
+                "summary": "Rejeter la vente",
                 "description": "",
                 "responses": {
                     "200": {
@@ -2641,10 +2962,94 @@
                 "parameters": [
                     {
                         "in": "path",
-                        "name": "{id}",
+                        "name": "id",
                         "type": "string"
                     }
                 ]
+            }
+        },
+        "/api/maison/vendu/{id}": {
+            "put": {
+                "summary": "Vendre maison",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/maison/detail/2": {
+            "get": {
+                "summary": "detail maison",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MAISON"
+                ],
+                "parameters": []
             }
         },
         "/api/maison/supprimer/{id}": {
@@ -2780,6 +3185,7 @@
                                 "description": "this is the description",
                                 "image": "image/M6eTb4DYdiHNxNQWaA555kWxjyENMBYMS8Ljjjwc.png",
                                 "annee_construction": "2021-12-12",
+                                "nombre_etage": 12,
                                 "categories_id": 1
                             }
                         }
@@ -2911,6 +3317,7 @@
                                     "format": "binary"
                                 },
                                 "annee_construction": "2021-12-12",
+                                "nombre_etage": "12",
                                 "description": "this is the first house",
                                 "categories_id": "1"
                             }
@@ -2919,7 +3326,124 @@
                 }
             }
         },
-        "/api/auth/update/{id}": {
+        "/api/temoigngage/MestemoignageAccepter": {
+            "get": {
+                "summary": "Mes temoignages accepter",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "UTILISATEUR"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/temoigngage/MestemoignageRefuser": {
+            "get": {
+                "summary": "Mes temoignages refuses",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "UTILISATEUR"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/temoigngage/MestemoignageAttente": {
+            "get": {
+                "summary": "Mes temoignages en attente",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": ""
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "UTILISATEUR"
+                ],
+                "parameters": []
+            }
+        },
+        "/api/auth/update/2": {
             "post": {
                 "summary": "modifier compte",
                 "description": "",
@@ -2964,13 +3488,7 @@
                 "tags": [
                     "UTILISATEUR"
                 ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "type": "string"
-                    }
-                ]
+                "parameters": []
             }
         },
         "/api/auth/me": {
