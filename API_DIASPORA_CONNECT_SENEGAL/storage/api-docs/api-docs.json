@@ -77,7 +77,7 @@
                 ]
             }
         },
-        "/api/messages/details/1": {
+        "/api/messages/details/{id}": {
             "get": {
                 "summary": "Detail message",
                 "description": "",
@@ -113,7 +113,13 @@
                 "tags": [
                     "MESSAGES"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/messages/create": {
@@ -997,7 +1003,7 @@
                 ]
             }
         },
-        "/api/temoignage/detail/1": {
+        "/api/temoignage/detail/{id}": {
             "get": {
                 "summary": "detail temoignage",
                 "description": "",
@@ -1033,7 +1039,13 @@
                 "tags": [
                     "TEMOIGNAGE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/temoignage/liste": {
@@ -1185,7 +1197,7 @@
                 ]
             }
         },
-        "/api/commentaire/article/detail/10": {
+        "/api/commentaire/article/detail/{id}": {
             "get": {
                 "summary": "details commentaire",
                 "description": "",
@@ -1221,7 +1233,13 @@
                 "tags": [
                     "COMMENTAIRE ARTICLE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/commentaire/article/liste": {
@@ -1452,7 +1470,7 @@
                 }
             }
         },
-        "/api/categorie/detail/1": {
+        "/api/categorie/detail/{id}": {
             "get": {
                 "summary": "detail categorie",
                 "description": "",
@@ -1488,7 +1506,13 @@
                 "tags": [
                     "CATEGORIE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/categorie/liste": {
@@ -1635,7 +1659,13 @@
                 "tags": [
                     "DEMANDE SERVICE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/service/demande/accepter/{id}": {
@@ -1761,7 +1791,7 @@
                 "parameters": []
             }
         },
-        "/api/service/demande/detail/1": {
+        "/api/service/demande/detail/{id}": {
             "get": {
                 "summary": "detail demande",
                 "description": "",
@@ -1797,7 +1827,13 @@
                 "tags": [
                     "DEMANDE SERVICE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/service/demande/liste": {
@@ -2024,7 +2060,7 @@
                 }
             }
         },
-        "/api/article/detail/1": {
+        "/api/article/detail/{id}": {
             "get": {
                 "summary": "detail article",
                 "description": "",
@@ -2060,7 +2096,13 @@
                 "tags": [
                     "ARTICLE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/article/liste": {
@@ -2380,7 +2422,7 @@
                 }
             }
         },
-        "/api/service/detail/1": {
+        "/api/service/detail/{id}": {
             "get": {
                 "summary": "detail service",
                 "description": "",
@@ -2416,7 +2458,13 @@
                 "tags": [
                     "SERVICE"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/service/liste": {
@@ -2671,7 +2719,13 @@
                 "tags": [
                     "TERRAIN"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/terrain/edit/{id}": {
@@ -2756,7 +2810,7 @@
                 }
             }
         },
-        "/api/terrain/detail/4": {
+        "/api/terrain/detail/{id}": {
             "get": {
                 "summary": "detail terrain",
                 "description": "",
@@ -2792,7 +2846,13 @@
                 "tags": [
                     "TERRAIN"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/terrain/liste": {
@@ -3013,7 +3073,7 @@
                 ]
             }
         },
-        "/api/maison/detail/2": {
+        "/api/maison/detail/{id}": {
             "get": {
                 "summary": "detail maison",
                 "description": "",
@@ -3049,7 +3109,13 @@
                 "tags": [
                     "MAISON"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/maison/supprimer/{id}": {
@@ -3443,7 +3509,7 @@
                 "parameters": []
             }
         },
-        "/api/auth/update/2": {
+        "/api/auth/update/{id}": {
             "post": {
                 "summary": "modifier compte",
                 "description": "",
@@ -3488,7 +3554,13 @@
                 "tags": [
                     "UTILISATEUR"
                 ],
-                "parameters": []
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string"
+                    }
+                ]
             }
         },
         "/api/auth/me": {
