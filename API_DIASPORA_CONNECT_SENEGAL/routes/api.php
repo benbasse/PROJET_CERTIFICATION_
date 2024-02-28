@@ -108,11 +108,24 @@ Route::post('messages/create', [MessagesController::class, 'store']);
 Route::get('messages/details/{id}', [MessagesController::class, 'show']);
 Route::delete('messages/supprimer/{id}', [MessagesController::class, 'destroy']);
 
+// Maisons nouvelles routes
+Route::get('maison/MaisonAcheter', [maisonController::class, 'Acheter']);
+Route::get('maison/MaisonNonAcheter', [maisonController::class, 'NonAcheter']);
+//  nouvelles routes
+Route::get('terrain/TerrainAcheter', [terrainController::class, 'Acheter']);
+Route::get('terrain/TerrainNonAcheter', [terrainController::class, 'NonAcheter']);
 
 Route::middleware(['auth:api', 'acces:admin'])->group(function () {
     Route::post('maison/create', [maisonController::class, 'create']);
     Route::put('maison/edit/{id}', [maisonController::class, 'update']);
     Route::delete('maison/supprimer/{id}', [maisonController::class, 'destroy']);
+    //nouvelles ajouts maisons
+    Route::put('maison/vendu/{id}', [maisonController::class, 'Vendre']);
+    Route::put('maison/Nonvendu/{id}', [maisonController::class, 'NonVendre']);
+    //nouvelles ajouts terrains
+    Route::put('terrain/vendu/{id}', [terrainController::class, 'Vendre']);
+    Route::put('terrain/Nonvendu/{id}', [terrainController::class, 'NonVendre']);
+
 
     Route::post('service/demande/refuser/{id}', [DemandeServiceController::class, 'refuserDemande']);
     Route::put('service/demande/accepter/{id}', [DemandeServiceController::class, 'accepterDemande']);
