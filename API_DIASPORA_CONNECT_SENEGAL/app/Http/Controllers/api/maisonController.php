@@ -18,9 +18,97 @@ class maisonController extends Controller
         try {
             return response()->json([
                 "status" => 200,
-                "message" => "Voici la liste des maisons 12",
+                "message" => "Voici la liste des maisons ",
                 "maison" => Maison::with('Categorie')->get(),
             ]);
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function Acheter(Maison $maison)
+    {
+        try {
+            $maison = Maison::with('Categorie')->where('est_acheter',true)->get();
+            if ($maison->isEmpty()) {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Pas de maison acheter pour le moment",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Voici la liste des maisons achetes",
+                    "maison" => $maison,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function NonAcheter(Maison $maison)
+    {
+        try {
+            $maison = Maison::with('Categorie')->where('est_acheter',false)->get();
+            if ($maison->isEmpty()) {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Tous les maisons ont ete vendu",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 200,
+                    "message" => "Voici la liste des maisons non acheter",
+                    "maison" => $maison,
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function Vendre($id)
+    {
+        try {
+            $maison = Maison::find($id);
+            if ($maison) {
+                $maison->update([
+                    'est_acheter' => 1
+                ]);
+                return response()->json([
+                    "status" => 201,
+                    "message" => "Maison vendu",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 404,
+                    "message" => "Cette maison n'existe pas",
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+
+    public function NonVendre($id)
+    {
+        try {
+            $maison = Maison::find($id);
+            if ($maison) {
+                $maison->update([
+                    'est_acheter' => 0
+                ]);
+                return response()->json([
+                    "status" => 201,
+                    "message" => "Vente rejeter",
+                ]);
+            } else {
+                return response()->json([
+                    "status" => 404,
+                    "message" => "Cette maison n'existe pas",
+                ]);
+            }
         } catch (Exception $e) {
             return response()->json($e);
         }
